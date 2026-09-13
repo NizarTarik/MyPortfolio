@@ -1,0 +1,1870 @@
+/* ============================================================
+   PROJECTS — ART DIRECTED PORTFOLIO
+   ============================================================ */
+
+:host {
+  display: block;
+}
+
+.projects-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  padding: 40px 0 80px;
+  box-sizing: border-box;
+  background: var(--bg);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.projects-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto 10px;
+}
+
+.header-copy {
+  min-width: 0;
+}
+
+.eyebrow {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+}
+
+.projects-header h1 {
+  margin: 0;
+  font-size: clamp(44px, 5.5vw, 82px);
+  line-height: 0.9;
+  letter-spacing: -0.065em;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.projects-header h1 span {
+  color: var(--subtle);
+}
+
+.project-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-counter span {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.project-counter i {
+  font-size: 12px;
+  font-style: normal;
+  color: var(--subtle);
+}
+
+.project-counter small {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+.project-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.45fr) minmax(340px, 0.55fr);
+  align-items: center;
+  gap: clamp(60px, 7vw, 130px);
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* ============================================================
+   DEVICE AREA
+   ============================================================ */
+
+.device-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 650px;
+  isolation: isolate;
+}
+
+/* ============================================================
+   AMBIENT GLOW
+   ============================================================ */
+
+.device-glow {
+  position: absolute;
+  left: 48%;
+  top: 48%;
+  width: 700px;
+  height: 500px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center,
+      var(--accent-soft) 0%,
+      rgba(255, 255, 255, 0.035) 34%,
+      transparent 70%);
+  filter: blur(55px);
+  opacity: 0.8;
+  z-index: -3;
+  pointer-events: none;
+}
+
+/* ============================================================
+   DECORATIVE ORBIT
+   ============================================================ */
+
+.device-orbit {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: min(720px, 90%);
+  aspect-ratio: 1.65;
+  transform:
+    translate(-50%, -50%) rotate(-7deg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  opacity: 0.45;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.device-orbit::before {
+  content: "";
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  top: 8%;
+  right: 18%;
+  border-radius: 50%;
+  background: var(--accent-color);
+  box-shadow:
+    0 0 0 6px var(--accent-soft),
+    0 0 25px var(--accent-color);
+}
+
+/* ============================================================
+   DEVICE COMPOSITION
+   ============================================================ */
+
+.device-composition {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 980px;
+  min-height: 470px;
+  margin: 0 auto;
+  perspective: 1400px;
+  z-index: 3;
+}
+
+/* ============================================================
+   LAPTOP
+   ============================================================ */
+
+.laptop {
+  position: absolute;
+  left: 2%;
+  top: 7%;
+  width: 82%;
+  aspect-ratio: 16 / 10;
+  cursor: zoom-in;
+  z-index: 2;
+  transform:
+    rotateX(1deg) rotateY(-4deg) rotateZ(-1.5deg);
+  transform-origin: center center;
+  transition:
+    transform 0.65s cubic-bezier(.2, .8, .2, 1),
+    filter 0.5s ease;
+}
+
+.laptop:hover {
+  transform:
+    translateY(-12px) rotateX(1deg) rotateY(-4deg) rotateZ(-1.5deg) scale(1.015);
+
+  filter:
+    drop-shadow(0 35px 45px var(--theme-shadow));
+}
+
+.laptop:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 10px;
+}
+
+/* ============================================================
+   LAPTOP SHADOW
+   ============================================================ */
+
+.laptop-shadow {
+  position: absolute;
+  left: 8%;
+  right: 4%;
+  bottom: -8%;
+  height: 18%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.3);
+  filter: blur(25px);
+  opacity: 0.7;
+  z-index: -2;
+}
+
+/* ============================================================
+   LAPTOP SCREEN
+   ============================================================ */
+
+.laptop-screen {
+  position: absolute;
+  inset: 0 0 5% 0;
+  padding: 10px;
+  box-sizing: border-box;
+  background:
+    linear-gradient(145deg,
+      #171c24,
+      #0c1016);
+  border: 1px solid var(--glass-border);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 65px var(--theme-shadow),
+    0 8px 20px var(--theme-shadow-soft),
+    inset 0 1px 0 var(--glass-highlight);
+  overflow: hidden;
+}
+
+/* ============================================================
+   SCREEN CAMERA
+   ============================================================ */
+
+.screen-camera {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #05070a;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  z-index: 6;
+}
+
+/* ============================================================
+   PROJECT IMAGE
+   ============================================================ */
+
+.project-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ============================================================
+   SCREEN OVERLAY
+   ============================================================ */
+
+.screen-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(125deg,
+      var(--glass-highlight-soft),
+      transparent 25%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.12));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ============================================================
+   LAPTOP BASE
+   ============================================================ */
+
+.laptop-base {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 0;
+  height: 7%;
+  border-radius: 0 0 26px 26px;
+  background:
+    linear-gradient(to bottom,
+      #636b76,
+      #343a43);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 12px 20px var(--theme-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.laptop-base::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 2px;
+  width: 20%;
+  height: 3px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   IPHONE
+   ============================================================ */
+
+.iphone {
+  position: absolute;
+  right: 1%;
+  bottom: -1%;
+  width: clamp(145px, 19%, 195px);
+  aspect-ratio: 175 / 355;
+  cursor: zoom-in;
+  z-index: 5;
+  transform:
+    rotate(4deg) translateY(0);
+  transform-origin: center bottom;
+  transition:
+    transform 0.65s cubic-bezier(.2, .8, .2, 1),
+    filter 0.5s ease;
+}
+
+.iphone:hover {
+  transform:
+    rotate(2deg) translateY(-16px) scale(1.02);
+
+  filter:
+    drop-shadow(0 28px 38px var(--theme-shadow));
+}
+
+.iphone:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 8px;
+  border-radius: 35px;
+}
+
+/* ============================================================
+   PHONE SHADOW
+   ============================================================ */
+
+.iphone-shadow {
+  position: absolute;
+  left: 10%;
+  right: -10%;
+  bottom: -3%;
+  height: 20%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.38);
+  filter: blur(20px);
+  z-index: -2;
+}
+
+/* ============================================================
+   IPHONE FRAME
+   ============================================================ */
+
+.iphone-frame {
+  position: absolute;
+  inset: 0;
+  padding: 7px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 36px;
+  background:
+    linear-gradient(145deg,
+      #4a515c 0%,
+      #161b22 42%,
+      #292f38 100%);
+  box-shadow:
+    0 35px 65px var(--theme-shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+/* ============================================================
+   PHONE SCREEN
+   ============================================================ */
+
+.iphone-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 29px;
+  background: #080b10;
+}
+
+.iphone-screen .project-image {
+  object-fit: cover;
+}
+
+/* ============================================================
+   DYNAMIC ISLAND
+   ============================================================ */
+
+.dynamic-island {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  width: 70px;
+  height: 21px;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  background: #05070a;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  z-index: 8;
+}
+
+/* ============================================================
+   PHONE TOP / BOTTOM
+   ============================================================ */
+
+.screen-top,
+.screen-bottom {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.screen-top {
+  top: 18px;
+}
+
+.screen-bottom {
+  bottom: 17px;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+}
+
+.screen-bottom strong {
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   PHONE BUTTONS
+   ============================================================ */
+
+.iphone-button {
+  position: absolute;
+  width: 3px;
+  border-radius: 5px;
+  background: #515965;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.volume-one {
+  left: -2px;
+  top: 22%;
+  height: 27px;
+}
+
+.volume-two {
+  left: -2px;
+  top: 32%;
+  height: 27px;
+}
+
+.power {
+  right: -2px;
+  top: 29%;
+  height: 55px;
+}
+
+/* ============================================================
+   IMAGE VIEW HINT
+   ============================================================ */
+
+.image-expand-hint {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 14px;
+  transform: translate(-50%, -40%);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.laptop:hover .image-expand-hint,
+.iphone:hover .image-expand-hint {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.expand-icon {
+  font-size: 15px;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+/* ============================================================
+   IMAGE CONTROLS
+   ============================================================ */
+
+.image-controls {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 22px;
+  z-index: 10;
+}
+
+.image-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background: var(--surface-strong);
+  color: var(--text-primary);
+  font-size: 17px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.image-controls button:hover {
+  background: var(--hover-bg);
+  border-color: var(--glass-highlight);
+  color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.image-counter {
+  min-width: 55px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.image-counter span {
+  color: var(--subtle);
+}
+
+/* ============================================================
+   PROJECT INFORMATION
+   ============================================================ */
+
+.project-info {
+  position: relative;
+  max-width: 520px;
+}
+
+.project-number {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--subtle);
+}
+
+.project-category {
+  margin-bottom: 17px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.19em;
+  color: var(--text-secondary);
+}
+
+.project-info h2 {
+  margin: 0 0 25px;
+  font-size: clamp(44px, 5vw, 70px);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.project-description {
+  max-width: 460px;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   TECHNOLOGIES
+   ============================================================ */
+
+.technology-section {
+  margin-top: 38px;
+}
+
+.technology-label {
+  display: block;
+  margin-bottom: 13px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--subtle);
+}
+
+.technology-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.technology {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.technology:hover {
+  background: var(--hover-bg);
+  border-color: var(--glass-border);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   PROJECT LINK
+   ============================================================ */
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 35px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  transition:
+    gap 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.project-link:hover {
+  gap: 20px;
+  color: var(--accent-color);
+  opacity: 0.9;
+}
+
+.project-link strong {
+  font-size: 17px;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+/* ============================================================
+   PROJECT NAVIGATION
+   ============================================================ */
+
+.project-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 55px;
+}
+
+.project-navigation>button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    gap 0.2s ease;
+}
+
+.project-navigation>button:hover {
+  color: var(--text-primary);
+}
+
+.navigation-arrow {
+  font-size: 17px;
+  color: var(--accent-color);
+}
+
+.project-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.project-dots button {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--subtle);
+  cursor: pointer;
+  transition:
+    width 0.25s ease,
+    border-radius 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-dots button.active {
+  width: 22px;
+  border-radius: 20px;
+  background: var(--accent-color);
+}
+
+/* ============================================================
+   IMAGE MODAL
+   CLEAN / PREMIUM / DESKTOP + MOBILE
+   ============================================================ */
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px;
+  box-sizing: border-box;
+  background: rgba(7, 9, 13, 0.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+  z-index: 99999;
+}
+
+.image-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* ============================================================
+   MODAL CONTENT
+   ============================================================ */
+
+.image-modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(1500px, 100%);
+  height: min(92vh, 920px);
+  max-height: 92vh;
+  padding: 22px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  background: rgba(17, 20, 26, 0.94);
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.55),
+    0 10px 35px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(18px) scale(0.975);
+  transition:
+    transform 0.35s cubic-bezier(.2, .8, .2, 1);
+}
+
+.image-modal.is-open .image-modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* ============================================================
+   MODAL HEADER
+   ============================================================ */
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 54px;
+  padding: 0 2px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.modal-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-eyebrow {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.modal-heading strong {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  margin-right: 18px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.modal-divider {
+  color: rgba(255, 255, 255, 0.18);
+}
+
+/* ============================================================
+   MODAL CLOSE
+   ============================================================ */
+
+.modal-close {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.045);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.modal-close span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 15px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.modal-close span:first-child {
+  transform:
+    translate(-50%, -50%) rotate(45deg);
+}
+
+.modal-close span:last-child {
+  transform:
+    translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ============================================================
+   MODAL IMAGE AREA
+   ============================================================ */
+
+.modal-image-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  padding: 28px 76px;
+}
+
+/* ============================================================
+   MODAL GALLERY
+   ============================================================ */
+
+.modal-gallery {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  gap: 28px;
+}
+
+/* ============================================================
+   MODAL PREVIEW CARD
+   ============================================================ */
+
+.modal-preview-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+}
+
+.desktop-preview {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+}
+
+.mobile-preview-card {
+  flex:
+    0 0 clamp(190px, 21%, 285px);
+  width: clamp(190px, 21%, 285px);
+}
+
+/* ============================================================
+   MODAL PREVIEW LABEL
+   ============================================================ */
+
+.modal-preview-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 18px;
+  margin-bottom: 9px;
+  flex-shrink: 0;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+.modal-preview-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+/* ============================================================
+   MODAL IMAGE WRAPPER
+   ============================================================ */
+
+.modal-image-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100% - 27px);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.modal-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  user-select: none;
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.22);
+  animation: modalImageIn 0.3s ease;
+}
+
+/* ============================================================
+   MOBILE IMAGE
+   ============================================================ */
+
+.mobile-wrapper {
+  width: 100%;
+}
+
+.modal-image.mobile-preview {
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+/* ============================================================
+   MODAL IMAGE ANIMATION
+   ============================================================ */
+
+@keyframes modalImageIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ============================================================
+   MODAL ARROWS
+   ============================================================ */
+
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  transform: translateY(-50%);
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 18px;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+  z-index: 5;
+}
+
+.modal-arrow:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--accent-color);
+}
+
+.modal-arrow-left {
+  left: 10px;
+}
+
+.modal-arrow-right {
+  right: 10px;
+}
+
+.modal-arrow-left:hover {
+  transform: translate(-3px, -50%);
+}
+
+.modal-arrow-right:hover {
+  transform: translate(3px, -50%);
+}
+
+/* ============================================================
+   MODAL FOOTER
+   ============================================================ */
+
+.modal-footer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 14px 2px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.modal-project-info {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.modal-footer-dot {
+  color: var(--accent-color);
+}
+
+.modal-hint {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================
+   LARGE DESKTOP
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+  .projects-wrapper {
+    padding:
+      75px 5vw 90px;
+  }
+
+  .project-layout {
+    grid-template-columns:
+      minmax(0, 1.3fr) minmax(310px, 0.7fr);
+    gap: 65px;
+  }
+
+  .device-area {
+    min-height: 600px;
+  }
+
+  .device-composition {
+    min-height: 440px;
+  }
+
+  .laptop {
+    width: 82%;
+  }
+
+  .iphone {
+    width: 175px;
+  }
+
+  .modal-image-area {
+    padding:
+      24px 68px;
+  }
+
+  .modal-gallery {
+    gap: 22px;
+  }
+
+  .mobile-preview-card {
+    flex-basis: 210px;
+    width: 210px;
+  }
+}
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1050px) {
+
+  .projects-header {
+    margin-bottom: 65px;
+  }
+
+  .project-layout {
+    grid-template-columns: 1fr;
+    gap: 70px;
+  }
+
+  .device-area {
+    min-height: 610px;
+  }
+
+  .device-composition {
+    max-width: 900px;
+    min-height: 460px;
+  }
+
+  .laptop {
+    width: 80%;
+  }
+
+  .iphone {
+    width: 175px;
+    right: 4%;
+  }
+
+  .project-info {
+    max-width: 680px;
+  }
+
+  .image-modal {
+    padding: 20px;
+  }
+
+  .image-modal-content {
+    width: 100%;
+    height: 92vh;
+    max-height: 92vh;
+  }
+
+  .modal-image-area {
+    padding:
+      22px 58px;
+  }
+
+  .modal-gallery {
+    gap: 18px;
+  }
+
+  .mobile-preview-card {
+    flex-basis: 180px;
+    width: 180px;
+  }
+}
+
+/* ============================================================
+   SMALL TABLET
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .device-area {
+    min-height: 540px;
+  }
+
+  .device-composition {
+    min-height: 400px;
+  }
+
+  .device-glow {
+    width: 500px;
+    height: 380px;
+  }
+
+  .device-orbit {
+    width: 80%;
+  }
+
+  .laptop {
+    width: 80%;
+    left: 1%;
+  }
+
+  .iphone {
+    width: 150px;
+    right: 4%;
+  }
+
+  .laptop-screen {
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .iphone-frame {
+    padding: 6px;
+    border-radius: 30px;
+  }
+
+  .iphone-screen {
+    border-radius: 24px;
+  }
+
+  .modal-image-area {
+    padding:
+      20px 48px;
+  }
+
+  .modal-gallery {
+    gap: 14px;
+  }
+
+  .mobile-preview-card {
+    flex-basis: 150px;
+    width: 150px;
+  }
+
+  .modal-preview-label {
+    font-size: 7px;
+  }
+
+  .modal-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .modal-arrow-left {
+    left: 4px;
+  }
+
+  .modal-arrow-right {
+    right: 4px;
+  }
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .projects-wrapper {
+    padding:
+      55px 20px 75px;
+  }
+
+  .projects-header {
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+
+  .projects-header h1 {
+    font-size: 43px;
+  }
+
+  .project-counter {
+    padding-top: 4px;
+  }
+
+  /* DEVICE */
+
+  .device-area {
+    min-height: auto;
+    margin-bottom: 20px;
+    padding:
+      10px 0 5px;
+  }
+
+  .device-glow {
+    width: 350px;
+    height: 300px;
+    filter: blur(50px);
+  }
+
+  .device-orbit {
+    width: 95%;
+  }
+
+  .device-composition {
+    width: 100%;
+    min-height: 310px;
+  }
+
+  /* LAPTOP */
+
+  .laptop {
+    left: 0;
+    top: 8%;
+    width: 84%;
+    transform: rotateZ(-1.5deg);
+  }
+
+  .laptop:hover {
+    transform:
+      translateY(-7px) rotateZ(-1.5deg) scale(1.01);
+  }
+
+  .laptop-screen {
+    padding: 6px;
+    border-radius: 10px;
+  }
+
+  .laptop-base {
+    border-radius:
+      0 0 14px 14px;
+  }
+
+  /* PHONE */
+
+  .iphone {
+    right: 1%;
+    bottom: 0;
+    width: 105px;
+    transform: rotate(4deg);
+  }
+
+  .iphone:hover {
+    transform:
+      rotate(2deg) translateY(-8px) scale(1.02);
+  }
+
+  .iphone-frame {
+    padding: 5px;
+    border-radius: 23px;
+  }
+
+  .iphone-screen {
+    border-radius: 19px;
+  }
+
+  .dynamic-island {
+    top: 9px;
+    width: 45px;
+    height: 13px;
+  }
+
+  .screen-top {
+    top: 25px;
+    left: 10px;
+    right: 10px;
+    font-size: 5px;
+  }
+
+  .screen-bottom {
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    font-size: 5px;
+  }
+
+  .screen-bottom strong {
+    font-size: 7px;
+  }
+
+  /* CONTROLS */
+
+  .image-controls {
+    margin-top: 18px;
+  }
+
+  .image-controls button {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* INFO */
+
+  .project-info h2 {
+    font-size: 46px;
+  }
+
+  .project-description {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .project-navigation {
+    margin-top: 40px;
+  }
+
+  /* MODAL */
+
+  .image-modal {
+    padding: 10px;
+  }
+
+  .image-modal-content {
+    width: 100%;
+    height: 96vh;
+    max-height: 96vh;
+    padding: 13px;
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    padding-bottom: 12px;
+  }
+
+  .modal-meta {
+    margin-right: 10px;
+  }
+
+  .modal-heading strong {
+    font-size: 13px;
+  }
+
+  .modal-image-area {
+    padding:
+      18px 42px;
+  }
+
+  .modal-gallery {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-preview-card {
+    width: 100%;
+  }
+
+  .desktop-preview {
+    flex:
+      1 1 62%;
+    min-height: 0;
+  }
+
+  .mobile-preview-card {
+    flex:
+      0 0 34%;
+    width: 100%;
+    min-height: 0;
+  }
+
+  .modal-preview-label {
+    height: 14px;
+    margin-bottom: 5px;
+    font-size: 7px;
+  }
+
+  .modal-image-wrapper {
+    height: calc(100% - 19px);
+    border-radius: 10px;
+  }
+
+  .modal-image {
+    padding: 5px;
+  }
+
+  .modal-image.mobile-preview {
+    max-width: 180px;
+  }
+
+  .modal-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+  }
+
+  .modal-arrow-left {
+    left: 0;
+  }
+
+  .modal-arrow-right {
+    right: 0;
+  }
+
+  .modal-footer {
+    min-height: 34px;
+  }
+
+  .modal-project-info {
+    display: flex;
+  }
+
+  .modal-hint {
+    display: none;
+  }
+}
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .projects-wrapper {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .projects-header h1 {
+    font-size: 38px;
+  }
+
+  .device-area {
+    min-height: auto;
+  }
+
+  .device-composition {
+    min-height: 270px;
+  }
+
+  .laptop {
+    width: 83%;
+  }
+
+  .iphone {
+    width: 88px;
+    right: 1%;
+  }
+
+  .laptop-screen {
+    padding: 5px;
+    border-radius: 8px;
+  }
+
+  .iphone-frame {
+    padding: 4px;
+    border-radius: 19px;
+  }
+
+  .iphone-screen {
+    border-radius: 16px;
+  }
+
+  .dynamic-island {
+    top: 7px;
+    width: 37px;
+    height: 11px;
+  }
+
+  .screen-top {
+    top: 19px;
+    font-size: 4px;
+  }
+
+  .screen-bottom {
+    bottom: 8px;
+    font-size: 4px;
+  }
+
+  .screen-bottom strong {
+    font-size: 6px;
+  }
+
+  .project-info h2 {
+    font-size: 40px;
+  }
+
+  .project-navigation>button {
+    font-size: 8px;
+  }
+
+  /* MODAL */
+
+  .image-modal {
+    padding: 6px;
+  }
+
+  .image-modal-content {
+    padding: 10px;
+    border-radius: 14px;
+  }
+
+  .modal-header {
+    min-height: 48px;
+    padding-bottom: 9px;
+  }
+
+  .modal-eyebrow {
+    font-size: 7px;
+  }
+
+  .modal-heading strong {
+    font-size: 12px;
+  }
+
+  .modal-meta {
+    font-size: 8px;
+  }
+
+  .modal-close {
+    width: 34px;
+    height: 34px;
+  }
+
+  .modal-image-area {
+    padding:
+      14px 38px;
+  }
+
+  .modal-gallery {
+    gap: 9px;
+  }
+
+  .desktop-preview {
+    flex:
+      1 1 60%;
+  }
+
+  .mobile-preview-card {
+    flex:
+      0 0 36%;
+  }
+
+  .modal-preview-label {
+    height: 12px;
+    margin-bottom: 4px;
+    font-size: 6px;
+  }
+
+  .modal-image.mobile-preview {
+    max-width: 125px;
+  }
+
+  .modal-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 13px;
+  }
+
+  .modal-project-info {
+    font-size: 7px;
+  }
+}
+
+/* ============================================================
+   VERY SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 360px) {
+
+  .device-composition {
+    min-height: 235px;
+  }
+
+  .laptop {
+    width: 82%;
+  }
+
+  .iphone {
+    width: 76px;
+  }
+
+  .iphone-frame {
+    padding: 3px;
+    border-radius: 16px;
+  }
+
+  .iphone-screen {
+    border-radius: 13px;
+  }
+
+  .dynamic-island {
+    top: 6px;
+    width: 32px;
+    height: 9px;
+  }
+
+  .screen-top {
+    top: 17px;
+  }
+
+  .screen-bottom {
+    bottom: 7px;
+  }
+
+  /* MODAL */
+
+  .modal-image-area {
+    padding:
+      10px 34px;
+  }
+
+  .modal-gallery {
+    gap: 7px;
+  }
+
+  .modal-preview-label {
+    font-size: 5px;
+  }
+
+  .modal-image.mobile-preview {
+    max-width: 105px;
+  }
+
+  .modal-arrow {
+    width: 30px;
+    height: 30px;
+  }
+
+  .modal-arrow-left {
+    left: 0;
+  }
+
+  .modal-arrow-right {
+    right: 0;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .laptop,
+  .iphone,
+  .image-expand-hint,
+  .image-modal,
+  .image-modal-content,
+  .modal-arrow,
+  .modal-close,
+  .technology,
+  .image-controls button,
+  .project-link {
+    transition: none;
+  }
+
+  .modal-image {
+    animation: none;
+  }
+}

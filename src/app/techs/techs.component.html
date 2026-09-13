@@ -1,0 +1,323 @@
+<section class="portfolio-shell" [class.light-theme]="theme === 'light'">
+
+  <!-- ===================================================== -->
+  <!-- AMBIENT BACKGROUND -->
+  <!-- ===================================================== -->
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+
+  <!-- ===================================================== -->
+  <!-- HEADER -->
+  <!-- ===================================================== -->
+
+  <header class="space-header">
+
+    <span class="eyebrow">
+      SELECTED WORK
+    </span>
+
+    <h1>
+      Things I've
+      <span>built.</span>
+    </h1>
+
+  </header>
+
+
+  <!-- ===================================================== -->
+  <!-- TECHNOLOGY FILTERS -->
+  <!-- HARD CODED -->
+  <!-- ===================================================== -->
+
+  <nav class="technology-filters" aria-label="Technology categories">
+
+    <!-- ALL -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'all'" [style.--filter-color]="'#7dd3fc'"
+      (click)="showAll()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        All
+      </span>
+
+      <span class="filter-count">
+        {{ planets.length }}
+      </span>
+    </button>
+
+
+    <!-- FRONTEND -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'frontend'"
+      [style.--filter-color]="'#dd0031'" (click)="showFrontend()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        Frontend
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('frontend') }}
+      </span>
+    </button>
+
+
+    <!-- BACKEND -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'backend'"
+      [style.--filter-color]="'#6db33f'" (click)="showBackend()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        Backend
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('backend') }}
+      </span>
+    </button>
+
+
+    <!-- DATABASE -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'db'" [style.--filter-color]="'#336791'"
+      (click)="showDatabase()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        Database
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('db') }}
+      </span>
+    </button>
+
+
+    <!-- DEVOPS -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'devops'"
+      [style.--filter-color]="'#8b5cf6'" (click)="showDevops()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        DevOps
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('devops') }}
+      </span>
+    </button>
+
+
+    <!-- AUTOMATION -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'automation'"
+      [style.--filter-color]="'#f59e0b'" (click)="showAutomation()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        Automation
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('automation') }}
+      </span>
+    </button>
+
+
+    <!-- LOG -->
+
+    <button type="button" class="filter-button" [class.active]="activeType === 'log'" [style.--filter-color]="'#94a3b8'"
+      (click)="showLog()">
+      <span class="filter-dot"></span>
+
+      <span class="filter-label">
+        Log
+      </span>
+
+      <span class="filter-count">
+        {{ getCount('log') }}
+      </span>
+    </button>
+
+  </nav>
+
+
+  <!-- ===================================================== -->
+  <!-- CONTROLS -->
+  <!-- ===================================================== -->
+
+  <div class="sim-controls">
+
+    <button class="control-button" type="button" (click)="togglePause()">
+      {{ isPaused ? '▶' : 'Ⅱ' }}
+    </button>
+
+    <div class="control-divider"></div>
+
+    <button class="icon-button" type="button" (click)="zoomOut()">
+      −
+    </button>
+
+    <button class="zoom-value" type="button" (click)="resetView()">
+      {{ (zoomLevel * 100).toFixed(0) }}%
+    </button>
+
+    <button class="icon-button" type="button" (click)="zoomIn()">
+      +
+    </button>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- ACTIVE CATEGORY -->
+  <!-- ===================================================== -->
+
+  <div class="active-category" [style.--category-color]="getCurrentCategoryColor()">
+
+    <span class="category-indicator"></span>
+
+    <span class="category-text">
+
+      {{
+      activeType === 'all'
+      ? 'ALL TECHNOLOGIES'
+      : activeType === 'frontend'
+      ? 'FRONTEND'
+      : activeType === 'backend'
+      ? 'BACKEND'
+      : activeType === 'db'
+      ? 'DATABASE'
+      : activeType === 'devops'
+      ? 'DEVOPS'
+      : activeType === 'automation'
+      ? 'AUTOMATION'
+      : 'LOG'
+      }}
+
+    </span>
+
+    <span class="category-separator">
+      /
+    </span>
+
+    <span class="category-count">
+
+      {{ visiblePlanets.length }}
+
+
+
+    </span>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- EMPTY -->
+  <!-- ===================================================== -->
+
+  <div *ngIf="visiblePlanets.length === 0" class="empty-category">
+
+    <span class="empty-category-title">
+      NO TECHNOLOGIES
+    </span>
+
+    <span class="empty-category-text">
+      No technologies are assigned to this category yet.
+    </span>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- CANVAS -->
+  <!-- ===================================================== -->
+
+  <div class="canvas-container" (mousemove)="onCanvasMouseMove($event)" (mouseleave)="onCanvasMouseLeave()">
+
+    <canvas #spaceCanvas (click)="onCanvasClick($event)"></canvas>
+
+  </div>
+
+
+  <!-- ===================================================== -->
+  <!-- TECHNOLOGY LIST -->
+  <!-- ===================================================== -->
+
+  <nav *ngIf="visiblePlanets.length > 0" class="technology-constellation" aria-label="Technologies">
+
+    <div class="constellation-grid">
+
+      <button *ngFor="
+          let planet of visiblePlanets;
+          trackBy: trackPlanet
+        " type="button" class="constellation-node" [class.active]="selectedPlanet === planet"
+        [style.--node-color]="planet.color" (click)="selectPlanet(planet)">
+
+        <span class="node-core">
+
+          <img [src]="planet.image" [alt]="planet.name" loading="lazy" />
+
+        </span>
+
+        <span class="node-name">
+          {{ planet.name }}
+        </span>
+
+      </button>
+
+    </div>
+
+  </nav>
+
+
+  <!-- ===================================================== -->
+  <!-- HUD -->
+  <!-- ===================================================== -->
+
+  <aside *ngIf="selectedPlanet && visiblePlanets.length > 0" class="planet-hud"
+    [style.--planet-color]="selectedPlanet.color" [style.transform]="
+      'translate3d(' +
+      hudPosition.x +
+      'px, ' +
+      hudPosition.y +
+      'px, 0)'
+    " (pointerdown)="startHudDrag($event)" [class.dragging]="isHudDragging">
+
+    <div class="hud-top">
+
+      <span class="hud-icon">
+
+        <img [src]="selectedPlanet.image" [alt]="selectedPlanet.name" />
+
+      </span>
+
+      <span class="hud-name">
+        {{ selectedPlanet.name }}
+      </span>
+
+    </div>
+
+
+    <div class="hud-types">
+
+      <span *ngFor="let type of selectedPlanet.type" class="hud-type" [style.--type-color]="getTypeColor(type)">
+        {{ type }}
+      </span>
+
+    </div>
+
+
+    <p class="hud-description">
+      {{ selectedPlanet.description }}
+    </p>
+
+
+
+
+  </aside>

@@ -1,0 +1,465 @@
+<section class="projects-wrapper">
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+
+  <header class="projects-header">
+
+    <div class="header-copy">
+
+      <span class="eyebrow">
+        SIDE PROJECTS
+      </span>
+
+      <h1>
+        Things I've
+        <span>built.</span>
+      </h1>
+
+    </div>
+
+    <div class="project-counter">
+
+      <span>
+        {{ (activeProjectIndex + 1).toString().padStart(2, '0') }}
+      </span>
+
+      <i>/</i>
+
+      <small>
+        {{ projects.length.toString().padStart(2, '0') }}
+      </small>
+
+    </div>
+
+  </header>
+
+
+  <!-- ============================================================
+       MAIN PROJECT
+       ============================================================ -->
+
+  <div class="project-layout">
+
+
+    <!-- ==========================================================
+         VISUAL AREA
+         ========================================================== -->
+
+    <div class="device-area">
+
+      <div class="device-glow"></div>
+
+      <div class="device-orbit"></div>
+
+
+      <!-- ========================================================
+           DEVICE COMPOSITION
+           ======================================================== -->
+
+      <div class="device-composition">
+
+
+        <!-- ======================================================
+             LAPTOP
+             ====================================================== -->
+
+        <div class="laptop" role="button" tabindex="0" aria-label="Open project preview" (click)="openImageModal()"
+          (keydown.enter)="openImageModal()" (keydown.space)="$event.preventDefault(); openImageModal()">
+
+          <div class="laptop-shadow"></div>
+
+          <div class="laptop-screen">
+
+            <div class="screen-camera"></div>
+
+            <!-- MULTIPLE PC PREVIEW IMAGES -->
+
+            <img class="project-image" [src]="activePreviewPc" [alt]="activeProject.title + ' desktop preview'" />
+
+            <div class="screen-overlay"></div>
+
+            <div class="image-expand-hint">
+
+              <span class="expand-icon">
+                ⤢
+              </span>
+
+              <span>
+                VIEW
+              </span>
+
+            </div>
+
+          </div>
+
+          <div class="laptop-base"></div>
+
+        </div>
+
+
+        <!-- ======================================================
+             PHONE
+             ====================================================== -->
+
+        <div class="iphone" role="button" tabindex="0" aria-label="Open project preview" (click)="openImageModal()"
+          (keydown.enter)="openImageModal()" (keydown.space)="$event.preventDefault(); openImageModal()">
+
+          <div class="iphone-shadow"></div>
+
+          <div class="iphone-frame">
+
+            <div class="dynamic-island"></div>
+
+            <div class="iphone-screen">
+
+              <!-- MULTIPLE PHONE PREVIEW IMAGES -->
+
+              <img class="project-image" [src]="activePreviewPhone" [alt]="activeProject.title + ' mobile preview'" />
+
+              <div class="screen-overlay"></div>
+
+              <div class="screen-top">
+
+                <span>
+                  {{ activeProject.year }}
+                </span>
+
+              </div>
+
+              <div class="screen-bottom">
+
+                <span>
+                  PROJECT
+                </span>
+
+                <strong>
+                  {{ activeProject.title }}
+                </strong>
+
+              </div>
+
+              <div class="image-expand-hint phone-expand">
+
+                <span class="expand-icon">
+                  ⤢
+                </span>
+
+                <span>
+                  VIEW
+                </span>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- PHONE BUTTONS -->
+
+          <div class="iphone-button volume-one"></div>
+
+          <div class="iphone-button volume-two"></div>
+
+          <div class="iphone-button power"></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ========================================================
+           IMAGE CONTROLS
+
+           THESE ARE THE EXISTING BUTTONS.
+           They now control the PC + PHONE preview images.
+           ======================================================== -->
+
+      <div class="image-controls">
+
+        <!-- PREVIOUS -->
+
+        <button type="button" aria-label="Previous project image" (click)="previousImage(); $event.stopPropagation()">
+          ←
+        </button>
+
+
+        <!-- IMAGE COUNTER -->
+
+        <span class="image-counter">
+
+          {{ (activeImageIndex + 1).toString().padStart(2, '0') }}
+
+          <span>/</span>
+
+          {{ activeProject.images.length.toString().padStart(2, '0') }}
+
+        </span>
+
+
+        <!-- NEXT -->
+
+        <button type="button" aria-label="Next project image" (click)="nextImage(); $event.stopPropagation()">
+          →
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         PROJECT INFORMATION
+         ========================================================== -->
+
+    <div class="project-info">
+
+      <div class="project-number">
+        {{ activeProject.id.toString().padStart(2, '0') }}
+      </div>
+
+
+      <h2>
+        {{ activeProject.title }}
+      </h2>
+
+
+      <p class="project-description">
+        {{ activeProject.description }}
+      </p>
+
+
+      <!-- ========================================================
+           TECHNOLOGIES
+           ======================================================== -->
+
+      <div class="technology-section">
+
+        <span class="technology-label">
+          BUILT WITH
+        </span>
+
+        <div class="technology-list">
+
+          <span class="technology" *ngFor="let technology of activeProject.technologies">
+            {{ technology }}
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- ========================================================
+           PROJECT LINK
+           ======================================================== -->
+
+      <a *ngIf="activeProject.link" class="project-link" [href]="activeProject.link" target="_blank"
+        rel="noopener noreferrer">
+
+        <span>
+          VIEW PROJECT
+        </span>
+
+        <strong>
+          ↗
+        </strong>
+
+      </a>
+
+      <a *ngIf="activeProject.documentationLink" class="project-link" [href]="activeProject.documentationLink"
+        target="_blank" rel="noopener noreferrer" style="padding:10px 30px;font-size:.7rem;">
+        <span>
+          Documentation
+        </span>
+
+        <strong>
+          ↗
+        </strong>
+      </a>
+
+      <!-- ========================================================
+           PROJECT NAVIGATION
+           ======================================================== -->
+
+      <div class="project-navigation">
+
+        <!-- PREVIOUS PROJECT -->
+
+        <button type="button" aria-label="Previous project" (click)="previousProject()">
+
+          <span class="navigation-arrow">
+            ←
+          </span>
+
+          <span>
+            PREVIOUS
+          </span>
+
+        </button>
+
+
+        <!-- PROJECT DOTS -->
+
+        <div class="project-dots">
+
+          <button type="button" *ngFor="let project of projects; let i = index"
+            [class.active]="i === activeProjectIndex" [attr.aria-label]="'Select ' + project.title"
+            (click)="selectProject(i)">
+          </button>
+
+        </div>
+
+
+        <!-- NEXT PROJECT -->
+
+        <button type="button" aria-label="Next project" (click)="nextProject()">
+
+          <span>
+            NEXT
+          </span>
+
+          <span class="navigation-arrow">
+            →
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================================
+       IMAGE PREVIEW MODAL
+       ============================================================ -->
+
+  <div class="image-modal" [class.is-open]="isImageModalOpen" [attr.aria-hidden]="!isImageModalOpen"
+    (click)="closeImageModal()">
+
+    <div class="image-modal-content" role="dialog" aria-modal="true"
+      [attr.aria-label]="activeProject.title + ' image preview'" (click)="$event.stopPropagation()">
+
+
+      <!-- ========================================================
+           MODAL HEADER
+           ======================================================== -->
+
+      <div class="modal-header">
+
+        <div class="modal-heading">
+
+          <span class="modal-eyebrow">
+            PROJECT PREVIEW
+          </span>
+
+          <strong>
+            {{ activeProject.title }}
+          </strong>
+
+        </div>
+
+
+        <div class="modal-meta">
+
+          <span>
+
+            {{ (activeImageIndex + 1).toString().padStart(2, '0') }}
+
+            /
+
+            {{ activeProject.images.length.toString().padStart(2, '0') }}
+
+          </span>
+
+        </div>
+
+
+        <button type="button" class="modal-close" aria-label="Close image preview" (click)="closeImageModal()">
+
+          <span></span>
+
+          <span></span>
+
+        </button>
+
+      </div>
+
+
+      <!-- ========================================================
+           MODAL IMAGE AREA
+           ======================================================== -->
+
+      <div class="modal-image-area">
+
+
+        <!-- PREVIOUS -->
+
+        <button type="button" class="modal-arrow modal-arrow-left" aria-label="Previous image"
+          (click)="modalPreviousImage()">
+          ←
+        </button>
+
+
+        <!-- ======================================================
+             SINGLE FLEXIBLE IMAGE
+             ====================================================== -->
+
+        <div class="modal-gallery">
+
+          <div class="modal-preview-card">
+
+            <div class="modal-image-wrapper">
+
+              <img class="modal-image" [src]="modalImageUrl" [alt]="activeProject.title + ' project preview'" />
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- NEXT -->
+
+        <button type="button" class="modal-arrow modal-arrow-right" aria-label="Next image" (click)="modalNextImage()">
+          →
+        </button>
+
+      </div>
+
+
+      <!-- ========================================================
+           MODAL FOOTER
+           ======================================================== -->
+
+      <div class="modal-footer">
+
+        <div class="modal-project-info">
+
+          <span class="modal-footer-dot">
+            •
+          </span>
+
+          <span>
+            {{ activeProject.year }}
+          </span>
+
+        </div>
+
+
+        <div class="modal-hint">
+          ESC TO CLOSE
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>

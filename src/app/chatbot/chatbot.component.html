@@ -1,0 +1,186 @@
+<div class="chatbot-test">
+
+  <!-- ============================================================
+       FLOATING CHAT BUTTON
+       ============================================================ -->
+
+  <button type="button" class="chat-toggle" (click)="toggleChat()"
+    [attr.aria-label]="isOpen ? 'Close AI assistant' : 'Open AI assistant'">
+
+    <span class="toggle-dot"></span>
+
+    <span class="toggle-label">
+      {{ isOpen ? '×' : 'AI' }}
+    </span>
+
+  </button>
+
+
+  <!-- ============================================================
+       CHAT WINDOW
+       ============================================================ -->
+
+  <div class="chat-window" *ngIf="isOpen" (keydown)="stopKeyboardPropagation($event)">
+
+    <!-- ==========================================================
+         HEADER
+         ========================================================== -->
+
+    <header class="chat-header">
+
+      <div class="assistant-avatar">
+        <span></span>
+      </div>
+
+      <div class="assistant-info">
+
+        <div class="assistant-name">
+          Portfolio AI Assistant
+        </div>
+
+        <div class="assistant-status">
+          <span></span>
+          Online ·
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ==========================================================
+         SCROLLABLE CHAT CONTENT
+         ========================================================== -->
+
+    <div class="chat-content">
+
+      <!-- Welcome -->
+
+      <div class="welcome-section" *ngIf="messages.length === 0">
+
+        <h3>
+          How can I help?
+        </h3>
+
+        <p>
+          Ask me 😊
+        </p>
+
+      </div>
+
+
+      <!-- Messages -->
+
+      <div class="messages">
+
+        <div *ngFor="let item of messages" class="message-row" [class.user-row]="item.role === 'user'"
+          [class.ai-row]="item.role === 'assistant'">
+
+          <div class="message-bubble" [class.user-message]="item.role === 'user'"
+            [class.ai-message]="item.role === 'assistant'">
+            {{ item.text }}
+          </div>
+
+        </div>
+
+
+        <!-- Loading -->
+
+        <div class="message-row ai-row" *ngIf="isLoading">
+
+          <div class="message-bubble ai-message loading-message">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         QUICK QUESTIONS
+         ========================================================== -->
+
+    <div class="recommendations">
+
+      <div class="recommendations-header">
+
+        <span>
+          QUICK ASK
+        </span>
+
+        <div class="recommendations-line"></div>
+
+      </div>
+
+
+      <div class="recommendation-list">
+
+        <button type="button" (click)="askQuickQuestion('How old are you?')" [disabled]="isLoading">
+
+          <span class="recommendation-icon">
+            01
+          </span>
+
+          <span>
+            How old are you?
+          </span>
+
+        </button>
+
+
+        <button type="button" (click)="askQuickQuestion('What is your educational background?')" [disabled]="isLoading">
+
+          <span class="recommendation-icon">
+            02
+          </span>
+
+          <span>
+            Education
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         INPUT
+         ========================================================== -->
+
+    <div class="chat-input-area">
+
+      <div class="input-wrapper">
+
+        <input type="text" [(ngModel)]="message" placeholder="Ask something..." autocomplete="off"
+          [disabled]="isLoading" (keydown.enter)="onInputEnter()" (keydown.space)="$event.stopPropagation()" />
+
+
+        <button type="button" class="send-button" (click)="sendMessage()" [disabled]="!message.trim() || isLoading"
+          aria-label="Send message">
+
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+
+            <path d="M21 3 10 14"></path>
+
+            <path d="m21 3-7 18-4-7-7-4 18-7"></path>
+
+          </svg>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

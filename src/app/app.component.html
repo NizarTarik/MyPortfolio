@@ -1,0 +1,27 @@
+<div class="portfolio-shell" [class.light-theme]="theme === 'light'">
+
+  <div class="app-layout" [class.sidebar-collapsed]="isSidebarCollapsed">
+
+    <app-sidebar [currentTheme]="theme" (themeToggle)="toggleTheme()">
+    </app-sidebar>
+
+
+    <main class="main-content">
+
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================================================
+       CHATBOT
+       Global floating component
+       ========================================================= -->
+
+  <app-chatbot></app-chatbot>
+
+</div>

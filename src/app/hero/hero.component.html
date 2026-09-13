@@ -1,0 +1,292 @@
+<!-- =========================================================
+     HERO — GAME JOURNEY
+     ========================================================= -->
+
+<div class="portfolio-shell" [class.light-theme]="theme === 'light'">
+
+  <!-- =======================================================
+       AMBIENT BACKGROUND
+       ======================================================= -->
+
+  <div class="ambient-background">
+
+    <div class="ambient-glow glow-one"></div>
+    <div class="ambient-glow glow-two"></div>
+
+    <div class="grid-layer"></div>
+
+    <div class="particles">
+      <span *ngFor="let particle of particles" class="particle" [style.left.%]="particle.x" [style.top.%]="particle.y"
+        [style.width.px]="particle.size" [style.height.px]="particle.size" [style.opacity]="particle.opacity"
+        [style.--duration.s]="particle.duration" [style.--delay.s]="particle.delay">
+      </span>
+    </div>
+
+
+    <!-- =====================================================
+         CUTE JOURNEY CREATURE
+         ===================================================== -->
+
+    <div class="rope-companion" [class.pull-up]="activeStationIndex > previousStationIndex"
+      [class.pull-down]="activeStationIndex < previousStationIndex">
+
+      <!-- Rope -->
+      <div class="journey-rope" [style.height.px]="ropeHeight">
+      </div>
+
+      <!-- Rope glow -->
+      <div class="journey-rope-glow" [style.height.px]="ropeHeight">
+      </div>
+
+      <!-- Rope handle -->
+      <div class="rope-handle" [style.top.px]="ropeHeight">
+        <span></span>
+      </div>
+
+      <!-- Creature -->
+      <div class="cute-creature" [style.transform]="getCreatureTransform()">
+
+        <!-- ears -->
+        <div class="creature-ear ear-left"></div>
+        <div class="creature-ear ear-right"></div>
+
+        <!-- body -->
+        <div class="creature-body">
+
+          <!-- face -->
+          <div class="creature-face">
+
+            <span class="creature-eye eye-left"></span>
+            <span class="creature-eye eye-right"></span>
+
+            <span class="creature-mouth"></span>
+
+            <span class="creature-blush blush-left"></span>
+            <span class="creature-blush blush-right"></span>
+
+          </div>
+
+          <!-- little arms -->
+          <div class="creature-arm arm-left"></div>
+          <div class="creature-arm arm-right"></div>
+
+          <!-- feet -->
+          <div class="creature-foot foot-left"></div>
+          <div class="creature-foot foot-right"></div>
+
+        </div>
+
+        <!-- tiny shadow -->
+        <div class="creature-shadow"></div>
+
+      </div>
+
+      <!-- little floating status -->
+      <div class="creature-status">
+        <span class="status-line"></span>
+        <span>{{ activeStation.number }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =======================================================
+       JOURNEY
+       ======================================================= -->
+
+  <main class="journey">
+
+    <section class="portfolio-section" *ngFor="
+        let station of stations;
+        let i = index;
+        trackBy: trackByStation
+      " [class.active]="activeStationIndex === i" [class.previous]="i < activeStationIndex"
+      [class.next]="i > activeStationIndex" [style.transform]="getSectionTransform(i)">
+
+      <div class="section-content">
+
+        <!-- Section metadata -->
+
+        <div class="section-meta">
+
+          <span class="section-index">
+            {{ station.number }}
+          </span>
+
+          <span class="section-line"></span>
+
+          <span class="section-label">
+            {{ station.title }}
+          </span>
+
+        </div>
+
+
+        <!-- Section -->
+
+        <div class="section-view">
+
+          <ng-container [ngSwitch]="station.id">
+
+            <app-about *ngSwitchCase="'about'">
+            </app-about>
+
+            <app-projects *ngSwitchCase="'projects'">
+            </app-projects>
+
+            <app-techs *ngSwitchCase="'technologies'">
+            </app-techs>
+
+          </ng-container>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       GAME HUD PROGRESS
+       ======================================================= -->
+
+  <aside class="progress-nav">
+
+    <div class="mission-status">
+
+      <span class="status-dot"></span>
+
+      <span>
+        MISSION
+      </span>
+
+    </div>
+
+
+    <div class="progress-counter">
+
+      <span class="progress-current">
+        {{ activeStation.number }}
+      </span>
+
+      <span class="progress-total">
+        / {{ stations.length.toString().padStart(2, '0') }}
+      </span>
+
+    </div>
+
+
+    <div class="game-progress">
+
+      <div class="progress-track">
+
+        <!-- Energy fill -->
+
+        <div class="progress-fill" [style.height.%]="progressPercent">
+        </div>
+
+
+        <!-- Moving energy particle -->
+
+        <div class="progress-energy" [style.top.%]="progressPercent">
+        </div>
+
+
+        <!-- Checkpoints -->
+
+        <div class="checkpoint" *ngFor="
+            let station of stations;
+            let i = index
+          " [class.completed]="i < activeStationIndex" [class.current]="i === activeStationIndex"
+          [class.locked]="i > activeStationIndex" [style.top.%]="
+            stations.length === 1
+              ? 0
+              : (i / (stations.length - 1)) * 100
+          ">
+
+          <div class="checkpoint-core"></div>
+
+          <span class="checkpoint-number">
+            {{ station.number }}
+          </span>
+
+          <span class="checkpoint-ping"></span>
+
+        </div>
+
+      </div>
+
+
+      <div class="progress-percent">
+        {{ progressPercent | number:'1.0-0' }}%
+      </div>
+
+    </div>
+
+
+    <div class="mission-label">
+
+      <span>
+        EXPLORE
+      </span>
+
+      <span class="mission-arrow">
+        ↓
+      </span>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =======================================================
+       BOTTOM NAVIGATION
+       ======================================================= -->
+
+  <footer class="bottom-nav">
+
+    <button type="button" class="nav-button" (click)="previousStation()" [disabled]="activeStationIndex === 0">
+
+      <span>←</span>
+
+      PREVIOUS
+
+    </button>
+
+
+    <div class="current-section">
+
+      {{ activeStation.title }}
+
+    </div>
+
+
+    <button type="button" class="nav-button" (click)="nextStation()" [disabled]="
+        activeStationIndex === stations.length - 1
+      ">
+
+      NEXT
+
+      <span>→</span>
+
+    </button>
+
+  </footer>
+
+
+  <!-- =======================================================
+       SCROLL HINT
+       ======================================================= -->
+
+  <div class="interaction-hint">
+
+    <span>
+      SCROLL TO EXPLORE
+    </span>
+
+  </div>
+
+</div>

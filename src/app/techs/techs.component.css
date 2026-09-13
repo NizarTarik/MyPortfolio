@@ -1,0 +1,1098 @@
+/* ============================================================
+   TECHNOLOGIES — PREMIUM ORBIT INTERFACE
+   Uses theme variables from app.css
+   ============================================================ */
+
+/* ============================================================
+   HOST
+   ============================================================ */
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* ============================================================
+   MAIN TECHNOLOGIES SHELL
+   ============================================================ */
+
+.portfolio-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 880px;
+  overflow: hidden;
+
+  background: var(--bg);
+  color: var(--text-primary);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    "Segoe UI",
+    sans-serif;
+
+  transition:
+    background 500ms ease,
+    color 500ms ease;
+}
+
+
+/* ============================================================
+   AMBIENT LIGHT
+   ============================================================ */
+
+.ambient {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(140px);
+  opacity: 0.055;
+
+  z-index: 0;
+
+  transition:
+    opacity 500ms ease,
+    background 500ms ease;
+}
+
+.ambient-one {
+  top: -300px;
+  left: -220px;
+
+  background: var(--accent-color);
+}
+
+.ambient-two {
+  right: -280px;
+  bottom: -300px;
+
+  background:
+    color-mix(in srgb,
+      var(--accent-color) 35%,
+      #8b5cf6);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.space-header {
+  position: absolute;
+
+  top: 42px;
+  left: 42px;
+
+  z-index: 50;
+
+  pointer-events: none;
+}
+
+.eyebrow {
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--accent-color);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 0.2em;
+}
+
+.space-header h1 {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-size: clamp(2rem, 4vw, 3.8rem);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.06em;
+
+  font-weight: 650;
+}
+
+.space-header h1 span {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+
+/* ============================================================
+   TECHNOLOGY FILTERS
+   ============================================================ */
+
+.technology-filters {
+  position: absolute;
+
+  top: 142px;
+  left: 42px;
+
+  z-index: 1000;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 6px;
+
+  max-width: calc(100% - 84px);
+
+  pointer-events: auto;
+}
+
+
+/* ============================================================
+   FILTER BUTTON
+   ============================================================ */
+
+.filter-button {
+  --filter-color: var(--accent-color);
+
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  height: 34px;
+
+  padding: 0 11px;
+
+  appearance: none;
+
+  border: 1px solid var(--border-color);
+  border-radius: 11px;
+
+  color: var(--text-secondary);
+
+  background: var(--surface);
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  z-index: 1001;
+
+  backdrop-filter:
+    blur(25px) saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(25px) saturate(180%);
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.filter-button:hover {
+  color: var(--text-primary);
+
+  background: var(--hover-bg);
+
+  border-color:
+    color-mix(in srgb,
+      var(--filter-color) 30%,
+      var(--border-color));
+
+  transform: translateY(-1px);
+}
+
+.filter-button.active {
+  color: var(--text-primary);
+
+  border-color:
+    color-mix(in srgb,
+      var(--filter-color) 45%,
+      var(--border-color));
+
+  background:
+    color-mix(in srgb,
+      var(--filter-color) 9%,
+      var(--surface));
+
+  box-shadow:
+    0 8px 25px color-mix(in srgb,
+      var(--filter-color) 12%,
+      transparent);
+}
+
+.filter-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 7px;
+
+  border-radius: 50%;
+
+  background: var(--filter-color);
+
+  box-shadow:
+    0 0 8px color-mix(in srgb,
+      var(--filter-color) 60%,
+      transparent);
+}
+
+.filter-label {
+  white-space: nowrap;
+}
+
+.filter-count {
+  min-width: 16px;
+
+  padding: 2px 5px;
+
+  border-radius: 6px;
+
+  background: var(--hover-bg);
+
+  color: var(--text-secondary);
+
+  font-size: 8px;
+
+  text-align: center;
+}
+
+
+/* ============================================================
+   SIMULATION CONTROLS
+   ============================================================ */
+
+.sim-controls {
+  position: absolute;
+
+  top: 32px;
+  right: 32px;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+
+  gap: 2px;
+
+  padding: 5px;
+
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+
+  background: var(--surface);
+
+  backdrop-filter:
+    blur(30px) saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(30px) saturate(180%);
+
+  box-shadow:
+    0 12px 35px var(--theme-shadow-soft);
+}
+
+.sim-controls button {
+  appearance: none;
+
+  border: 0;
+
+  font-family: inherit;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    color 180ms ease,
+    transform 150ms ease;
+}
+
+.control-button,
+.icon-button,
+.zoom-value {
+  height: 32px;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--text-secondary);
+
+  background: transparent;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+}
+
+.control-button {
+  width: 32px;
+}
+
+.icon-button {
+  width: 30px;
+
+  font-size: 15px;
+}
+
+.zoom-value {
+  width: 44px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.control-button:hover,
+.icon-button:hover,
+.zoom-value:hover {
+  color: var(--text-primary);
+
+  background: var(--hover-bg);
+}
+
+.control-button:active,
+.icon-button:active,
+.zoom-value:active {
+  transform: scale(0.93);
+}
+
+.control-divider {
+  width: 1px;
+  height: 18px;
+
+  margin: 0 3px;
+
+  background: var(--border-color);
+}
+
+
+/* ============================================================
+   ACTIVE CATEGORY
+   ============================================================ */
+
+.active-category {
+  position: absolute;
+
+  top: 200px;
+  left: 42px;
+
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--text-secondary);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  pointer-events: none;
+}
+
+.category-indicator {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--category-color);
+
+  box-shadow:
+    0 0 10px var(--category-color);
+}
+
+.category-text {
+  color: var(--text-primary);
+}
+
+.category-separator {
+  color: var(--text-secondary);
+  opacity: 0.4;
+}
+
+.category-count {
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   CANVAS
+   ============================================================ */
+
+.canvas-container {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  pointer-events: auto;
+}
+
+.canvas-container canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  outline: none;
+
+  user-select: none;
+
+  touch-action: none;
+}
+
+
+/* ============================================================
+   TECHNOLOGY CONSTELLATION
+   ============================================================ */
+
+.technology-constellation {
+  position: absolute;
+
+  left: 42px;
+  bottom: 5%;
+
+  width: calc(100% - 84px);
+
+  z-index: 100;
+
+  pointer-events: auto;
+}
+
+.constellation-grid {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+}
+
+
+/* ============================================================
+   TECHNOLOGY NODE
+   ============================================================ */
+
+.constellation-node {
+  --node-color: var(--accent-color);
+
+  position: relative;
+
+  min-width: 118px;
+  height: 49px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 6px 9px;
+
+  appearance: none;
+
+  border: 1px solid var(--border-color);
+  border-radius: 13px;
+
+  color: var(--text-secondary);
+
+  background: var(--surface);
+
+  font-family: inherit;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  backdrop-filter:
+    blur(25px) saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(25px) saturate(180%);
+
+  transition:
+    color 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.constellation-node:hover {
+  color: var(--text-primary);
+
+  background: var(--hover-bg);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 25px var(--theme-shadow-soft);
+}
+
+.constellation-node.active {
+  color: var(--text-primary);
+
+  border-color:
+    color-mix(in srgb,
+      var(--node-color) 35%,
+      var(--border-color));
+
+  background:
+    color-mix(in srgb,
+      var(--node-color) 7%,
+      var(--surface));
+
+  box-shadow:
+    0 8px 30px color-mix(in srgb,
+      var(--node-color) 8%,
+      transparent);
+}
+
+
+/* ============================================================
+   NODE ICON
+   ============================================================ */
+
+.node-core {
+  width: 28px;
+  height: 28px;
+
+  flex: 0 0 28px;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--button-text);
+
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,
+        var(--node-color) 90%,
+        white),
+      color-mix(in srgb,
+        var(--node-color) 65%,
+        black));
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 4px 12px color-mix(in srgb,
+      var(--node-color) 15%,
+      transparent);
+}
+
+.node-core img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+/* ============================================================
+   NODE NAME
+   IMPORTANT:
+   Uses app.css theme variables.
+   Dark  -> #f4f7fb
+   Light -> #111827
+   ============================================================ */
+
+.constellation-node .node-name {
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  color: var(--text-primary) !important;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.01em;
+
+  transition:
+    color 300ms ease;
+}
+
+.constellation-node:hover .node-name {
+  color: var(--text-primary) !important;
+}
+
+.constellation-node.active .node-name {
+  color: var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   HUD
+   ============================================================ */
+
+.planet-hud {
+  --planet-color: var(--accent-color);
+
+  position: fixed;
+
+  right: 198px;
+  bottom: 35%;
+
+  width: 320px;
+
+  z-index: 2147483647;
+
+  padding: 20px;
+
+  border: 1px solid var(--border-color);
+
+  border-radius: 18px;
+
+  background: var(--surface);
+
+  backdrop-filter:
+    blur(35px) saturate(180%);
+
+  -webkit-backdrop-filter:
+    blur(35px) saturate(180%);
+
+  box-shadow:
+    0 20px 70px var(--theme-shadow-soft);
+
+  overflow: hidden;
+
+  cursor: grab;
+
+  touch-action: none;
+
+  user-select: none;
+
+  will-change: transform;
+
+  transition:
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.planet-hud.dragging {
+  cursor: grabbing;
+
+  z-index: 2147483647;
+
+  box-shadow:
+    0 28px 90px var(--theme-shadow);
+}
+
+.planet-hud::before {
+  content: "";
+
+  position: absolute;
+
+  top: -100px;
+  right: -100px;
+
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background: var(--planet-color);
+
+  filter: blur(100px);
+
+  opacity: 0.045;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   HUD HEADER
+   ============================================================ */
+
+.hud-top {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 16px;
+}
+
+.hud-icon {
+  width: 34px;
+  height: 34px;
+
+  flex: 0 0 34px;
+
+  display: grid;
+  place-items: center;
+
+  background: var(--planet-color);
+
+  border-radius: 9px;
+
+  overflow: hidden;
+}
+
+.hud-icon img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+.hud-name {
+  color: var(--text-primary);
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* ============================================================
+   HUD TYPES
+   ============================================================ */
+
+.hud-types {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-bottom: 16px;
+}
+
+.hud-type {
+  padding: 5px 9px;
+
+  border-radius: 7px;
+
+  color: var(--type-color);
+
+  background:
+    color-mix(in srgb,
+      var(--type-color) 10%,
+      transparent);
+
+  font-size: 9.5px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+
+/* ============================================================
+   HUD DESCRIPTION
+   ============================================================ */
+
+.hud-description {
+  position: relative;
+
+  margin: 0;
+
+  color: var(--text-secondary);
+
+  font-size: 13.5px;
+
+  line-height: 1.6;
+
+  letter-spacing: -0.01em;
+
+  user-select: text;
+}
+
+
+/* ============================================================
+   EMPTY CATEGORY
+   ============================================================ */
+
+.empty-category {
+  position: absolute;
+
+  top: 245px;
+  left: 42px;
+
+  z-index: 20;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  pointer-events: none;
+}
+
+.empty-category-title {
+  color: var(--text-primary);
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.empty-category-text {
+  color: var(--text-secondary);
+
+  font-size: 10px;
+}
+
+
+/* ============================================================
+   FOCUS
+   ============================================================ */
+
+.filter-button:focus-visible,
+.constellation-node:focus-visible,
+.sim-controls button:focus-visible {
+  outline: 2px solid var(--accent-color);
+
+  outline-offset: 3px;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .portfolio-shell {
+    min-height: 650px;
+  }
+
+  .space-header {
+    top: 72px;
+    left: 16px;
+  }
+
+  .space-header h1 {
+    font-size: 2rem;
+  }
+
+  .sim-controls {
+    top: 68px;
+    right: 16px;
+  }
+
+  .technology-filters {
+    top: 128px;
+
+    left: 16px;
+    right: 16px;
+
+    max-width: none;
+  }
+
+  .active-category {
+    top: 210px;
+    left: 16px;
+  }
+
+  .technology-constellation {
+    left: 16px;
+    right: 16px;
+
+    bottom: 170px;
+
+    width: auto;
+  }
+
+  .constellation-grid {
+    gap: 5px;
+  }
+
+  .constellation-node {
+    min-width: calc(50% - 3px);
+
+    height: 42px;
+  }
+
+  .node-core {
+    width: 27px;
+    height: 27px;
+
+    flex-basis: 27px;
+  }
+
+  .node-name {
+    font-size: 10px;
+  }
+
+  .planet-hud {
+    left: 16px;
+    right: 16px;
+
+    bottom: 16px;
+
+    width: auto;
+
+    padding: 18px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .space-header {
+    top: 68px;
+    left: 14px;
+  }
+
+  .space-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .sim-controls {
+    top: 64px;
+    right: 14px;
+  }
+
+  .technology-filters {
+    top: 122px;
+
+    left: 14px;
+    right: 14px;
+
+    gap: 4px;
+  }
+
+  .filter-button {
+    height: 31px;
+
+    padding: 0 8px;
+
+    gap: 5px;
+
+    font-size: 9px;
+  }
+
+  .active-category {
+    top: 205px;
+    left: 14px;
+  }
+
+  .technology-constellation {
+    left: 14px;
+    right: 14px;
+
+    bottom: 155px;
+  }
+
+  .constellation-node {
+    height: 40px;
+
+    padding: 5px 7px;
+  }
+
+  .node-core {
+    width: 25px;
+    height: 25px;
+
+    flex-basis: 25px;
+  }
+
+  .node-name {
+    font-size: 9px;
+  }
+
+  .planet-hud {
+    left: 14px;
+    right: 14px;
+
+    bottom: 14px;
+
+    width: auto;
+
+    padding: 14px;
+
+    border-radius: 16px;
+  }
+
+  .hud-description {
+    font-size: 10px;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .portfolio-shell *,
+  .portfolio-shell *::before,
+  .portfolio-shell *::after {
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* ============================================================
+   BOX SIZING
+   ============================================================ */
+
+.portfolio-shell *,
+.portfolio-shell *::before,
+.portfolio-shell *::after {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   SELECTION
+   ============================================================ */
+
+.portfolio-shell *::selection {
+  background: var(--accent-color);
+
+  color: var(--button-text);
+}
