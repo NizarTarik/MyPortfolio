@@ -64,18 +64,18 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         'A website showcasing Moroccan cuisine, with an admin dashboard for managing users, profiles, dishes, discounts, and reviews.',
 
       previewPc: [
-        '/assets/img/projects/restaurant/img2.png',
-        '/assets/img/projects/restaurant/img1.png'
+        'assets/img/projects/restaurant/img2.png',
+        'assets/img/projects/restaurant/img1.png'
       ],
 
       previewPhone: [
-        '/assets/img/projects/restaurant/img2phone.png',
-        '/assets/img/projects/restaurant/img1phone.png'
+        'assets/img/projects/restaurant/img2phone.png',
+        'assets/img/projects/restaurant/img1phone.png'
       ],
 
       images: [
-        '/assets/img/projects/restaurant/img2.png',
-        '/assets/img/projects/restaurant/img1.png'
+        'assets/img/projects/restaurant/img2.png',
+        'assets/img/projects/restaurant/img1.png'
       ],
 
       technologies: [
@@ -114,9 +114,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPc: [
-        '/assets/img/projects/insuranceCRM/dashboard.png',
-        '/assets/img/projects/insuranceCRM/clients.png',
-        '/assets/img/projects/insuranceCRM/policies.png'
+        'assets/img/projects/insuranceCRM/dashboard.png',
+        'assets/img/projects/insuranceCRM/clients.png',
+        'assets/img/projects/insuranceCRM/policies.png'
       ],
 
       // ----------------------------------------------------------
@@ -124,8 +124,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPhone: [
-        '/assets/img/projects/insuranceCRM/dashboardPhone.png',
-        '/assets/img/projects/insuranceCRM/clientsPhone.png'
+        'assets/img/projects/insuranceCRM/dashboardPhone.png',
+        'assets/img/projects/insuranceCRM/clientsPhone.png'
       ],
 
       // ----------------------------------------------------------
@@ -133,10 +133,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       images: [
-        '/assets/img/projects/insuranceCRM/dashboard.png',
-        '/assets/img/projects/insuranceCRM/clients.png',
-        '/assets/img/projects/insuranceCRM/policies.png',
-        '/assets/img/projects/insuranceCRM/claims.png'
+        'assets/img/projects/insuranceCRM/dashboard.png',
+        'assets/img/projects/insuranceCRM/clients.png',
+        'assets/img/projects/insuranceCRM/policies.png',
+        'assets/img/projects/insuranceCRM/claims.png'
       ],
 
       technologies: [
@@ -170,9 +170,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPc: [
-        '/assets/img/projects/tradingjournal/dashboardPC.png',
-        '/assets/img/projects/tradingjournal/listpc.png',
-        '/assets/img/projects/tradingjournal/placetradePc.png'
+        'assets/img/projects/tradingjournal/dashboardPC.png',
+        'assets/img/projects/tradingjournal/listpc.png',
+        'assets/img/projects/tradingjournal/placetradePc.png'
       ],
 
       // ----------------------------------------------------------
@@ -180,7 +180,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPhone: [
-        '/assets/img/projects/tradingjournal/dashboardPHONE.png'
+        'assets/img/projects/tradingjournal/dashboardPHONE.png'
       ],
 
       // ----------------------------------------------------------
@@ -188,9 +188,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       images: [
-        '/assets/img/projects/tradingjournal/dashboardPC.png',
-        '/assets/img/projects/tradingjournal/listpc.png',
-        '/assets/img/projects/tradingjournal/placetradePc.png'
+        'assets/img/projects/tradingjournal/dashboardPC.png',
+        'assets/img/projects/tradingjournal/listpc.png',
+        'assets/img/projects/tradingjournal/placetradePc.png'
       ],
 
       technologies: [
@@ -225,8 +225,8 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPc: [
-        '/assets/img/projects/AiInsuranceAgent/img1.png',
-        '/assets/img/projects/AiInsuranceAgent/summary.png'
+        'assets/img/projects/AiInsuranceAgent/img1.png',
+        'assets/img/projects/AiInsuranceAgent/summary.png'
       ],
 
       // ----------------------------------------------------------
@@ -234,7 +234,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       previewPhone: [
-        '/assets/img/projects/AiInsuranceAgent/img1Phone.png'
+        'assets/img/projects/AiInsuranceAgent/img1Phone.png'
       ],
 
       // ----------------------------------------------------------
@@ -242,9 +242,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       // ----------------------------------------------------------
 
       images: [
-        '/assets/img/projects/AiInsuranceAgent/img1.png',
-        '/assets/img/projects/AiInsuranceAgent/summary.png',
-        '/assets/img/projects/AiInsuranceAgent/workflow.png'
+        'assets/img/projects/AiInsuranceAgent/img1.png',
+        'assets/img/projects/AiInsuranceAgent/summary.png',
+        'assets/img/projects/AiInsuranceAgent/workflow.png'
       ],
 
       technologies: [

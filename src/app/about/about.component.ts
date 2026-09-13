@@ -35,12 +35,12 @@ export class AboutComponent {
 
   images: AboutImage[] = [
     {
-      url: '/assets/img/nizar.png',
+      url: 'assets/img/nizar.png',
       alt: 'Developer workspace',
       caption: ' 21 '
     },
     {
-      url: '/assets/img/qss.jpg',
+      url: 'assets/img/qss.jpg',
       alt: 'Know me video',
       caption: 'KNOW ME'
     }
