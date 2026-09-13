@@ -1,3 +1,4 @@
+
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -47,23 +48,11 @@ export class ChatbotComponent {
   messages: ChatMessage[] = [];
 
   // ==========================================================
-  // GEMINI
+  // CLOUDFLARE WORKER
   // ==========================================================
 
-  private readonly API_KEY =
-
-
-
-    /* --------------------------------------------       ------------------------------------------------------- */
-    //  I know it accesible  to everyone , and that's why it's free api model , you can use it 😂🤣😂😂😁
-    'AQ.Ab8RN6JO9OS5E-vbROj0dUN9jO83zxnglcrT3gC22_8Il_wYtw';
-  /* --------------------------------------------       ------------------------------------------------------- */
-
-
-
-
   private readonly API_URL =
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent';
+    'https://nizar-chatbot.nizartarik994.workers.dev/';
 
   // ==========================================================
   // AI GUIDE
@@ -143,12 +132,6 @@ export class ChatbotComponent {
   // ==========================================================
   // KEYBOARD PROTECTION
   // ==========================================================
-  //
-  // Prevent keyboard events from reaching the portfolio's
-  // global keyboard navigation.
-  //
-  // This is especially important for SPACE.
-  // ==========================================================
 
   stopKeyboardPropagation(
     event: KeyboardEvent
@@ -163,8 +146,11 @@ export class ChatbotComponent {
   // ==========================================================
 
   onInputEnter(): void {
+
     this.sendMessage();
+
   }
+
   // ==========================================================
   // TOGGLE CHAT
   // ==========================================================
@@ -202,19 +188,22 @@ export class ChatbotComponent {
       !text ||
       this.isLoading
     ) {
-      return;
-    }
 
+      return;
+
+    }
 
     // --------------------------------------------------------
     // ADD USER MESSAGE
     // --------------------------------------------------------
 
     this.messages.push({
-      role: 'user',
-      text
-    });
 
+      role: 'user',
+
+      text
+
+    });
 
     // --------------------------------------------------------
     // CLEAR INPUT
@@ -223,7 +212,6 @@ export class ChatbotComponent {
     this.message = '';
 
     this.isLoading = true;
-
 
     // --------------------------------------------------------
     // MAKE SURE GUIDE IS AVAILABLE
@@ -235,16 +223,19 @@ export class ChatbotComponent {
     ) {
 
       this.messages.push({
+
         role: 'assistant',
+
         text:
           'Sorry 😅 I could not load my information guide right now.'
+
       });
 
       this.isLoading = false;
 
       return;
-    }
 
+    }
 
     // ========================================================
     // AI INSTRUCTIONS
@@ -327,25 +318,35 @@ ${text}
     const body = {
 
       contents: [
+
         {
+
           parts: [
+
             {
+
               text: prompt
+
             }
+
           ]
+
         }
+
       ],
 
       generationConfig: {
+
         temperature: 0.4,
+
         maxOutputTokens: 500
+
       }
 
     };
 
-
     // ========================================================
-    // GEMINI REQUEST
+    // CLOUDFLARE WORKER REQUEST
     // ========================================================
 
     this.http
@@ -354,12 +355,12 @@ ${text}
         body,
         {
           headers: {
-            'Content-Type':
-              'application/json',
 
-            'x-goog-api-key':
-              this.API_KEY
+            'Content-Type':
+              'application/json'
+
           }
+
         }
       )
       .subscribe({
@@ -384,7 +385,6 @@ ${text}
             '=============================='
           );
 
-
           const answer =
             response
               ?.candidates?.[0]
@@ -392,12 +392,10 @@ ${text}
               ?.parts?.[0]
               ?.text;
 
-
           console.log(
             'GEMINI ANSWER:',
             answer
           );
-
 
           this.messages.push({
 
@@ -409,11 +407,9 @@ ${text}
 
           });
 
-
           this.isLoading = false;
 
         },
-
 
         // ====================================================
         // ERROR
@@ -426,7 +422,7 @@ ${text}
           );
 
           console.error(
-            'GEMINI ERROR'
+            'GEMINI / CLOUDFLARE ERROR'
           );
 
           console.error(
@@ -453,31 +449,26 @@ ${text}
             '=============================='
           );
 
-
           const googleMessage =
             error?.error?.error?.message ||
             error?.error?.message ||
             error?.message ||
             'Unknown Gemini API error.';
 
-
           const googleStatus =
             error?.error?.error?.status ||
             error?.error?.status ||
             'UNKNOWN_ERROR';
 
-
           const httpStatus =
             error?.status ||
             'Unknown';
-
 
           const displayMessage =
             `Gemini API Error\n\n` +
             `HTTP ${httpStatus}\n` +
             `${googleStatus}\n\n` +
             `${googleMessage}`;
-
 
           this.messages.push({
 
@@ -486,7 +477,6 @@ ${text}
             text: displayMessage
 
           });
-
 
           this.isLoading = false;
 
