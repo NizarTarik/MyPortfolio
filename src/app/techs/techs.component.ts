@@ -25,9 +25,7 @@ type TechnologyFilter =
   | 'frontend'
   | 'backend'
   | 'db'
-  | 'devops'
-  | 'automation'
-  | 'log';
+  | 'tools';
 
 interface Star {
   x: number;
@@ -116,7 +114,7 @@ export class TechsComponent
   activeType: TechnologyFilter = 'all';
 
   /*
-   * THIS is the array that is actually displayed.
+   * This is the array that is actually displayed.
    */
   visiblePlanets: Planet[] = [];
 
@@ -161,6 +159,18 @@ export class TechsComponent
   private planetImages =
     new Map<string, HTMLImageElement>();
 
+  /*
+   * CORE IMAGE
+   *
+   * Put the image here:
+   *
+   * src/assets/images/core.png
+   */
+  private coreImage?: HTMLImageElement;
+
+  private coreImageSrc =
+    'assets/img/cuteface.png';
+
   /* =======================================================
      HUD
      ======================================================= */
@@ -200,6 +210,7 @@ export class TechsComponent
   techsInitialized = false;
 
   ngOnInit(): void {
+
     this.initAsteroids();
 
     this.initCoreStars();
@@ -207,10 +218,15 @@ export class TechsComponent
     /*
      * Initially show every technology.
      */
-    this.visiblePlanets = [...this.planets];
+    this.visiblePlanets = [
+      ...this.planets
+    ];
 
-    if (this.visiblePlanets.length > 0) {
-      this.selectedPlanet = this.visiblePlanets[0];
+    if (
+      this.visiblePlanets.length > 0
+    ) {
+      this.selectedPlanet =
+        this.visiblePlanets[0];
     }
   }
 
@@ -219,6 +235,7 @@ export class TechsComponent
      ======================================================= */
 
   ngAfterViewInit(): void {
+
     const canvas =
       this.canvasRef.nativeElement;
 
@@ -233,8 +250,7 @@ export class TechsComponent
 
     /*
      * Read theme from localStorage and
-     * then read the real CSS variables
-     * from app.css.
+     * then read the real CSS variables.
      */
     this.readTheme();
 
@@ -246,18 +262,28 @@ export class TechsComponent
 
     this.preloadPlanetImages();
 
+    /*
+     * Preload the CORE image.
+     */
+    this.preloadCoreImage();
+
     this.repositionVisiblePlanets();
 
     this.resizeObserver =
       new ResizeObserver(() => {
+
         this.initCanvasSize();
 
         this.initStars();
 
         this.repositionVisiblePlanets();
+
       });
 
-    if (canvas.parentElement !== null) {
+    if (
+      canvas.parentElement !== null
+    ) {
+
       this.resizeObserver.observe(
         canvas.parentElement
       );
@@ -271,6 +297,7 @@ export class TechsComponent
      ======================================================= */
 
   ngOnDestroy(): void {
+
     cancelAnimationFrame(
       this.animationFrameId
     );
@@ -298,16 +325,8 @@ export class TechsComponent
     this.applyFilter('db');
   }
 
-  showDevops(): void {
-    this.applyFilter('devops');
-  }
-
-  showAutomation(): void {
-    this.applyFilter('automation');
-  }
-
-  showLog(): void {
-    this.applyFilter('log');
+  showTools(): void {
+    this.applyFilter('tools');
   }
 
   /* =======================================================
@@ -317,8 +336,6 @@ export class TechsComponent
   private applyFilter(
     type: TechnologyFilter
   ): void {
-
-    console.log('FILTER:', type);
 
     this.activeType = type;
 
@@ -332,19 +349,17 @@ export class TechsComponent
 
       this.visiblePlanets =
         this.planets.filter(
-          (planet: Planet): boolean => {
-            return planet.type.includes(type);
+          (
+            planet: Planet
+          ): boolean => {
+
+            return planet.type.includes(
+              type
+            );
+
           }
         );
     }
-
-    console.log(
-      'VISIBLE:',
-      this.visiblePlanets.map(
-        (planet: Planet): string =>
-          planet.name
-      )
-    );
 
     this.hoveredPlanet = null;
 
@@ -353,7 +368,9 @@ export class TechsComponent
      * filtered list.
      */
 
-    if (this.visiblePlanets.length > 0) {
+    if (
+      this.visiblePlanets.length > 0
+    ) {
 
       if (
         this.selectedPlanet === null ||
@@ -361,6 +378,7 @@ export class TechsComponent
           this.selectedPlanet
         )
       ) {
+
         this.selectedPlanet =
           this.visiblePlanets[0];
       }
@@ -387,8 +405,14 @@ export class TechsComponent
   ): number {
 
     return this.planets.filter(
-      (planet: Planet): boolean => {
-        return planet.type.includes(type);
+      (
+        planet: Planet
+      ): boolean => {
+
+        return planet.type.includes(
+          type
+        );
+
       }
     ).length;
   }
@@ -398,6 +422,7 @@ export class TechsComponent
      ======================================================= */
 
   getCurrentCategoryColor(): string {
+
     return this.getTypeColor(
       this.activeType
     );
@@ -420,14 +445,8 @@ export class TechsComponent
       case 'db':
         return '#336791';
 
-      case 'devops':
-        return '#8b5cf6';
-
-      case 'automation':
-        return '#f59e0b';
-
-      case 'log':
-        return '#94a3b8';
+      case 'tools':
+        return '#f97316';
 
       case 'all':
       default:
@@ -545,12 +564,6 @@ export class TechsComponent
             : 'rgba(255,255,255,0.035)'
         ),
 
-      /*
-       * THIS IS THE IMPORTANT ONE.
-       *
-       * Planet names use this value.
-       */
-
       textPrimary:
         getVariable(
           '--text-primary',
@@ -621,11 +634,6 @@ export class TechsComponent
       storedTheme === 'dark'
         ? 'dark'
         : 'light';
-
-    /*
-     * Only re-read CSS variables when
-     * localStorage actually changed.
-     */
 
     if (
       nextTheme !==
@@ -888,6 +896,33 @@ export class TechsComponent
   }
 
   /* =======================================================
+     CORE IMAGE PRELOAD
+     ======================================================= */
+
+  private preloadCoreImage(): void {
+
+    const image =
+      new Image();
+
+    image.src =
+      this.coreImageSrc;
+
+    image.onload = (): void => {
+
+      this.coreImage =
+        image;
+    };
+
+    image.onerror = (): void => {
+
+      console.warn(
+        'Core image failed:',
+        this.coreImageSrc
+      );
+    };
+  }
+
+  /* =======================================================
      ORBIT POSITION
      ======================================================= */
 
@@ -1001,12 +1036,6 @@ export class TechsComponent
      ======================================================= */
 
   private animate = (): void => {
-
-    /*
-     * Check localStorage every frame,
-     * but only reload CSS variables when
-     * the stored theme changed.
-     */
 
     this.syncTheme();
 
@@ -1320,6 +1349,10 @@ export class TechsComponent
         Date.now() * 0.002
       ) * 3;
 
+    /*
+     * OUTER GLOW
+     */
+
     const glow =
       this.ctx.createRadialGradient(
         centerX,
@@ -1364,6 +1397,10 @@ export class TechsComponent
 
     this.ctx.fill();
 
+    /*
+     * CORE ORBIT RING
+     */
+
     this.ctx.strokeStyle =
       this.theme === 'dark'
         ? 'rgba(125,211,252,0.25)'
@@ -1384,67 +1421,156 @@ export class TechsComponent
 
     this.ctx.stroke();
 
-    const core =
-      this.ctx.createRadialGradient(
-        centerX - 7,
-        centerY - 7,
-        0,
+    /*
+     * CORE IMAGE
+     */
+
+    const image =
+      this.coreImage;
+
+    const radius =
+      32 *
+      this.zoomLevel;
+
+    if (
+      image !== undefined &&
+      image.complete &&
+      image.naturalWidth > 0
+    ) {
+
+      this.ctx.save();
+
+      /*
+       * Clip the image into a circle.
+       */
+
+      this.ctx.beginPath();
+
+      this.ctx.arc(
         centerX,
         centerY,
-        28 * this.zoomLevel
+        radius,
+        0,
+        Math.PI * 2
       );
 
-    core.addColorStop(
-      0,
-      '#ffffff'
-    );
+      this.ctx.clip();
 
-    core.addColorStop(
-      0.35,
-      this.theme === 'dark'
-        ? '#dff7ff'
-        : '#e0f2fe'
-    );
+      const imageRatio =
+        image.naturalWidth /
+        image.naturalHeight;
 
-    core.addColorStop(
-      1,
-      this.themeColors.accent
-    );
+      let drawWidth = 0;
 
-    this.ctx.fillStyle =
-      core;
+      let drawHeight = 0;
 
-    this.ctx.beginPath();
+      /*
+       * Cover the complete circle.
+       */
 
-    this.ctx.arc(
-      centerX,
-      centerY,
-      22 * this.zoomLevel,
-      0,
-      Math.PI * 2
-    );
+      if (imageRatio > 1) {
 
-    this.ctx.fill();
+        drawHeight =
+          radius * 2;
 
-    this.ctx.fillStyle =
-      this.theme === 'dark'
-        ? '#071017'
-        : '#ffffff';
+        drawWidth =
+          drawHeight *
+          imageRatio;
 
-    this.ctx.textAlign =
-      'center';
+      } else {
 
-    this.ctx.textBaseline =
-      'middle';
+        drawWidth =
+          radius * 2;
 
-    this.ctx.font =
-      '700 8px Inter, sans-serif';
+        drawHeight =
+          drawWidth /
+          imageRatio;
+      }
 
-    this.ctx.fillText(
-      'CORE',
-      centerX,
-      centerY
-    );
+      this.ctx.drawImage(
+        image,
+        centerX -
+        drawWidth / 2,
+        centerY -
+        drawHeight / 2,
+        drawWidth,
+        drawHeight
+      );
+
+      this.ctx.restore();
+
+      /*
+       * IMAGE BORDER
+       */
+
+      this.ctx.strokeStyle =
+        this.theme === 'dark'
+          ? 'rgba(125,211,252,0.75)'
+          : 'rgba(2,132,199,0.55)';
+
+      this.ctx.lineWidth = 1.4;
+
+      this.ctx.beginPath();
+
+      this.ctx.arc(
+        centerX,
+        centerY,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
+      this.ctx.stroke();
+
+    } else {
+
+      /*
+       * Fallback while the image
+       * is loading or unavailable.
+       */
+
+      const core =
+        this.ctx.createRadialGradient(
+          centerX - 7,
+          centerY - 7,
+          0,
+          centerX,
+          centerY,
+          radius
+        );
+
+      core.addColorStop(
+        0,
+        '#ffffff'
+      );
+
+      core.addColorStop(
+        0.35,
+        this.theme === 'dark'
+          ? '#dff7ff'
+          : '#e0f2fe'
+      );
+
+      core.addColorStop(
+        1,
+        this.themeColors.accent
+      );
+
+      this.ctx.fillStyle =
+        core;
+
+      this.ctx.beginPath();
+
+      this.ctx.arc(
+        centerX,
+        centerY,
+        radius,
+        0,
+        Math.PI * 2
+      );
+
+      this.ctx.fill();
+    }
   }
 
   /* =======================================================
@@ -1455,11 +1581,6 @@ export class TechsComponent
     centerX: number,
     centerY: number
   ): void {
-
-    /*
-     * IMPORTANT:
-     * Only filtered planets.
-     */
 
     for (
       const planet of this.visiblePlanets
@@ -1578,12 +1699,6 @@ export class TechsComponent
     centerX: number,
     centerY: number
   ): void {
-
-    /*
-     * CRITICAL:
-     * This renders visiblePlanets,
-     * NOT this.planets.
-     */
 
     for (
       const planet of this.visiblePlanets
@@ -1724,8 +1839,7 @@ export class TechsComponent
 
         this.ctx.strokeStyle =
           selected
-            ? this.themeColors
-              .textPrimary
+            ? this.themeColors.textPrimary
             : `${planet.color}aa`;
 
         this.ctx.lineWidth =
@@ -1904,17 +2018,6 @@ export class TechsComponent
       this.zoomLevel +
       18;
 
-    /*
-     * ALWAYS read the actual
-     * --text-primary value from app.css.
-     *
-     * Dark:
-     * #f4f7fb
-     *
-     * Light:
-     * #111827
-     */
-
     const labelColor =
       this.getThemeColor(
         '--text-primary',
@@ -1933,11 +2036,6 @@ export class TechsComponent
 
     this.ctx.font =
       '600 9px Inter, sans-serif';
-
-    /*
-     * THIS is the actual canvas
-     * text color.
-     */
 
     this.ctx.fillStyle =
       labelColor;
@@ -2111,10 +2209,6 @@ export class TechsComponent
     let closestDistance =
       Infinity;
 
-    /*
-     * ONLY visible planets.
-     */
-
     for (
       const planet of this.visiblePlanets
     ) {
@@ -2206,10 +2300,6 @@ export class TechsComponent
 
     let closestDistance =
       Infinity;
-
-    /*
-     * ONLY visible planets.
-     */
 
     for (
       const planet of this.visiblePlanets

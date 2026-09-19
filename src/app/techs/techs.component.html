@@ -15,12 +15,12 @@
   <header class="space-header">
 
     <span class="eyebrow">
-      SELECTED WORK
+      STACK
     </span>
 
     <h1>
-      Things I've
-      <span>built.</span>
+      TECHNOLOGIES I've
+      <span>used.</span>
     </h1>
 
   </header>
@@ -28,7 +28,6 @@
 
   <!-- ===================================================== -->
   <!-- TECHNOLOGY FILTERS -->
-  <!-- HARD CODED -->
   <!-- ===================================================== -->
 
   <nav class="technology-filters" aria-label="Technology categories">
@@ -37,6 +36,7 @@
 
     <button type="button" class="filter-button" [class.active]="activeType === 'all'" [style.--filter-color]="'#7dd3fc'"
       (click)="showAll()">
+
       <span class="filter-dot"></span>
 
       <span class="filter-label">
@@ -46,6 +46,7 @@
       <span class="filter-count">
         {{ planets.length }}
       </span>
+
     </button>
 
 
@@ -53,6 +54,7 @@
 
     <button type="button" class="filter-button" [class.active]="activeType === 'frontend'"
       [style.--filter-color]="'#dd0031'" (click)="showFrontend()">
+
       <span class="filter-dot"></span>
 
       <span class="filter-label">
@@ -62,6 +64,7 @@
       <span class="filter-count">
         {{ getCount('frontend') }}
       </span>
+
     </button>
 
 
@@ -69,6 +72,7 @@
 
     <button type="button" class="filter-button" [class.active]="activeType === 'backend'"
       [style.--filter-color]="'#6db33f'" (click)="showBackend()">
+
       <span class="filter-dot"></span>
 
       <span class="filter-label">
@@ -78,6 +82,7 @@
       <span class="filter-count">
         {{ getCount('backend') }}
       </span>
+
     </button>
 
 
@@ -85,6 +90,7 @@
 
     <button type="button" class="filter-button" [class.active]="activeType === 'db'" [style.--filter-color]="'#336791'"
       (click)="showDatabase()">
+
       <span class="filter-dot"></span>
 
       <span class="filter-label">
@@ -94,54 +100,25 @@
       <span class="filter-count">
         {{ getCount('db') }}
       </span>
+
     </button>
 
 
-    <!-- DEVOPS -->
+    <!-- TOOLS & PLATFORMS -->
 
-    <button type="button" class="filter-button" [class.active]="activeType === 'devops'"
-      [style.--filter-color]="'#8b5cf6'" (click)="showDevops()">
+    <button type="button" class="filter-button" [class.active]="activeType === 'tools'"
+      [style.--filter-color]="'#f97316'" (click)="showTools()">
+
       <span class="filter-dot"></span>
 
       <span class="filter-label">
-        DevOps
+        Tools &amp; Platforms
       </span>
 
       <span class="filter-count">
-        {{ getCount('devops') }}
-      </span>
-    </button>
-
-
-    <!-- AUTOMATION -->
-
-    <button type="button" class="filter-button" [class.active]="activeType === 'automation'"
-      [style.--filter-color]="'#f59e0b'" (click)="showAutomation()">
-      <span class="filter-dot"></span>
-
-      <span class="filter-label">
-        Automation
+        {{ getCount('tools') }}
       </span>
 
-      <span class="filter-count">
-        {{ getCount('automation') }}
-      </span>
-    </button>
-
-
-    <!-- LOG -->
-
-    <button type="button" class="filter-button" [class.active]="activeType === 'log'" [style.--filter-color]="'#94a3b8'"
-      (click)="showLog()">
-      <span class="filter-dot"></span>
-
-      <span class="filter-label">
-        Log
-      </span>
-
-      <span class="filter-count">
-        {{ getCount('log') }}
-      </span>
     </button>
 
   </nav>
@@ -193,11 +170,7 @@
       ? 'BACKEND'
       : activeType === 'db'
       ? 'DATABASE'
-      : activeType === 'devops'
-      ? 'DEVOPS'
-      : activeType === 'automation'
-      ? 'AUTOMATION'
-      : 'LOG'
+      : 'TOOLS & PLATFORMS'
       }}
 
     </span>
@@ -207,11 +180,7 @@
     </span>
 
     <span class="category-count">
-
       {{ visiblePlanets.length }}
-
-
-
     </span>
 
   </div>
@@ -280,8 +249,10 @@
   <!-- HUD -->
   <!-- ===================================================== -->
 
-  <aside *ngIf="selectedPlanet && visiblePlanets.length > 0" class="planet-hud"
-    [style.--planet-color]="selectedPlanet.color" [style.transform]="
+  <aside *ngIf="
+      selectedPlanet &&
+      visiblePlanets.length > 0
+    " class="planet-hud" [style.--planet-color]="selectedPlanet.color" [style.transform]="
       'translate3d(' +
       hudPosition.x +
       'px, ' +
@@ -306,8 +277,18 @@
 
     <div class="hud-types">
 
-      <span *ngFor="let type of selectedPlanet.type" class="hud-type" [style.--type-color]="getTypeColor(type)">
-        {{ type }}
+      <span *ngFor="
+          let type of selectedPlanet.type
+        " class="hud-type" [style.--type-color]="getTypeColor(type)">
+        {{
+        type === 'frontend'
+        ? 'FRONTEND'
+        : type === 'backend'
+        ? 'BACKEND'
+        : type === 'db'
+        ? 'DATABASE'
+        : 'TOOLS'
+        }}
       </span>
 
     </div>
@@ -317,7 +298,6 @@
       {{ selectedPlanet.description }}
     </p>
 
-
-
-
   </aside>
+
+</section>

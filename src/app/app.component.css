@@ -1,180 +1,1253 @@
-  /* =========================================================
-    DESIGN TOKENS & THEMING
-    ========================================================= */
+/* =========================================================
+   DESIGN TOKENS & THEMING
+   ========================================================= */
 
-  .portfolio-shell {
-    /* ---------- DARK THEME ---------- */
+.portfolio-shell {
 
-    --bg: #07090d;
+  /* ---------- DARK THEME ---------- */
 
-    --surface: rgba(255, 255, 255, 0.035);
-    --surface-strong: rgba(255, 255, 255, 0.06);
+  --bg: #07090d;
 
-    --text-primary: #f4f7fb;
-    --text-secondary: #89919d;
-    --subtle: #555d68;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-strong: rgba(255, 255, 255, 0.06);
 
-    --border-color: rgba(255, 255, 255, 0.09);
+  --text-primary: #f4f7fb;
+  --text-secondary: #89919d;
+  --subtle: #555d68;
 
-    --accent-color: #7dd3fc;
-    --accent-soft: rgba(125, 211, 252, 0.14);
+  --border-color: rgba(255, 255, 255, 0.09);
 
-    --hover-bg: rgba(255, 255, 255, 0.05);
+  --accent-color: #7dd3fc;
+  --accent-soft: rgba(125, 211, 252, 0.14);
 
-    /* ---------- SHARED THEME VARIABLES ---------- */
+  --hover-bg: rgba(255, 255, 255, 0.05);
 
-    --theme-shadow: rgba(0, 0, 0, 0.30);
-    --theme-shadow-soft: rgba(0, 0, 0, 0.16);
+  --theme-shadow: rgba(0, 0, 0, 0.30);
+  --theme-shadow-soft: rgba(0, 0, 0, 0.16);
 
-    --glass-bg: rgba(12, 15, 22, 0.78);
-    --glass-bg-strong: rgba(12, 15, 22, 0.88);
-    --glass-border: rgba(255, 255, 255, 0.09);
+  --glass-bg: rgba(12, 15, 22, 0.78);
+  --glass-bg-strong: rgba(12, 15, 22, 0.88);
 
-    --glass-highlight: rgba(255, 255, 255, 0.09);
-    --glass-highlight-soft: rgba(255, 255, 255, 0.045);
+  --glass-border: rgba(255, 255, 255, 0.09);
 
-    --button-bg: #f4f7fb;
-    --button-text: #11131a;
+  --glass-highlight: rgba(255, 255, 255, 0.09);
+  --glass-highlight-soft: rgba(255, 255, 255, 0.045);
 
-    --input-bg: rgba(255, 255, 255, 0.035);
+  --button-bg: #f4f7fb;
+  --button-text: #11131a;
 
-    --muted-text: rgba(245, 247, 251, 0.38);
-    --secondary-text: rgba(245, 247, 251, 0.56);
+  --input-bg: rgba(255, 255, 255, 0.035);
 
-    --chat-user-bg: #f1f3f7;
-    --chat-user-text: #11131a;
+  --muted-text: rgba(245, 247, 251, 0.38);
+  --secondary-text: rgba(245, 247, 251, 0.56);
 
-    --status-color: #7df2a8;
+  --chat-user-bg: #f1f3f7;
+  --chat-user-text: #11131a;
 
-    position: relative;
+  --status-color: #7df2a8;
 
-    width: 100%;
-    height: 100vh;
-    min-height: 680px;
 
-    overflow: visible;
+  /* ---------- AMBIENT ---------- */
 
-    background: var(--bg);
-    color: var(--text-primary);
+  --ambient-opacity: 1;
+  --grid-opacity: 0.045;
+  --particle-opacity: 0.45;
 
-    font-family:
-      Inter,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      sans-serif;
 
-    transition:
-      background 500ms ease,
-      color 500ms ease;
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+
+  min-height: 680px;
+
+  overflow: visible;
+
+  background: var(--bg);
+
+  color: var(--text-primary);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  isolation: isolate;
+
+  transition:
+    background 500ms ease,
+    color 500ms ease;
+}
+
+
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+
+.portfolio-shell.light-theme {
+
+  --bg: #f5f7fa;
+
+  --surface: rgba(0, 0, 0, 0.035);
+  --surface-strong: rgba(0, 0, 0, 0.06);
+
+  --text-primary: #111827;
+  --text-secondary: #687180;
+  --subtle: #a1a8b2;
+
+  --border-color: rgba(15, 23, 42, 0.10);
+
+  --accent-color: #0284c7;
+  --accent-soft: rgba(2, 132, 199, 0.10);
+
+  --hover-bg: rgba(0, 0, 0, 0.05);
+
+  --theme-shadow: rgba(15, 23, 42, 0.12);
+  --theme-shadow-soft: rgba(15, 23, 42, 0.07);
+
+  --glass-bg: rgba(255, 255, 255, 0.78);
+  --glass-bg-strong: rgba(255, 255, 255, 0.88);
+
+  --glass-border: rgba(15, 23, 42, 0.09);
+
+  --glass-highlight: rgba(255, 255, 255, 0.95);
+  --glass-highlight-soft: rgba(15, 23, 42, 0.045);
+
+  --button-bg: #11131a;
+  --button-text: #ffffff;
+
+  --input-bg: rgba(15, 23, 42, 0.045);
+
+  --muted-text: rgba(17, 19, 26, 0.38);
+  --secondary-text: rgba(17, 19, 26, 0.62);
+
+  --chat-user-bg: #11131a;
+  --chat-user-text: #ffffff;
+
+  --status-color: #16a34a;
+
+  --ambient-opacity: 0.72;
+  --grid-opacity: 0.035;
+  --particle-opacity: 0.30;
+}
+
+
+/* =========================================================
+   INTERACTIVE AMBIENT BACKGROUND
+   ========================================================= */
+
+.ambient-background {
+
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  opacity:
+    var(--ambient-opacity);
+
+  transition:
+    opacity 500ms ease;
+}
+
+
+/* =========================================================
+   AMBIENT GLOWS
+   ========================================================= */
+
+.ambient-glow {
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter:
+    blur(90px);
+
+  will-change:
+    transform;
+
+  transition:
+    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 500ms ease;
+}
+
+
+/* ---------- MAIN BLUE GLOW ---------- */
+
+.ambient-glow-one {
+
+  top: -260px;
+  left: 8%;
+
+  background:
+    var(--accent-color);
+
+  opacity:
+    0.075;
+
+  animation:
+    ambientFloatOne 18s ease-in-out infinite;
+}
+
+
+/* ---------- SECONDARY PURPLE GLOW ---------- */
+
+.ambient-glow-two {
+
+  right: -280px;
+  bottom: -240px;
+
+  background:
+    #6366f1;
+
+  opacity:
+    0.045;
+
+  animation:
+    ambientFloatTwo 24s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   SLOW AMBIENT MOVEMENT
+   ========================================================= */
+
+@keyframes ambientFloatOne {
+
+  0%,
+  100% {
+    margin-top: 0;
   }
 
+  50% {
+    margin-top: 35px;
+  }
+}
 
-  /* =========================================================
-    LIGHT THEME
-    ========================================================= */
 
-  .portfolio-shell.light-theme {
-    --bg: #f5f7fa;
+@keyframes ambientFloatTwo {
 
-    --surface: rgba(0, 0, 0, 0.035);
-    --surface-strong: rgba(0, 0, 0, 0.06);
-
-    --text-primary: #111827;
-    --text-secondary: #687180;
-    --subtle: #a1a8b2;
-
-    --border-color: rgba(15, 23, 42, 0.10);
-
-    --accent-color: #0284c7;
-    --accent-soft: rgba(2, 132, 199, 0.10);
-
-    --hover-bg: rgba(0, 0, 0, 0.05);
-
-    /* ---------- LIGHT THEME OVERRIDES ---------- */
-
-    --theme-shadow: rgba(15, 23, 42, 0.12);
-    --theme-shadow-soft: rgba(15, 23, 42, 0.07);
-
-    --glass-bg: rgba(255, 255, 255, 0.78);
-    --glass-bg-strong: rgba(255, 255, 255, 0.88);
-
-    --glass-border: rgba(15, 23, 42, 0.09);
-
-    --glass-highlight: rgba(255, 255, 255, 0.95);
-    --glass-highlight-soft: rgba(15, 23, 42, 0.045);
-
-    --button-bg: #11131a;
-    --button-text: #ffffff;
-
-    --input-bg: rgba(15, 23, 42, 0.045);
-
-    --muted-text: rgba(17, 19, 26, 0.38);
-    --secondary-text: rgba(17, 19, 26, 0.62);
-
-    --chat-user-bg: #11131a;
-    --chat-user-text: #ffffff;
-
-    --status-color: #16a34a;
+  0%,
+  100% {
+    margin-bottom: 0;
   }
 
+  50% {
+    margin-bottom: 30px;
+  }
+}
 
-  /* =========================================================
-    ROOT LAYOUT
-    ========================================================= */
 
-  :root {
-    --sidebar-width: 280px;
-    --sidebar-collapsed-width: 80px;
+/* =========================================================
+   SUBTLE GRID
+   ========================================================= */
+
+.ambient-grid {
+
+  position: absolute;
+
+  inset: -40px;
+
+  opacity:
+    var(--grid-opacity);
+
+  background-image:
+
+    linear-gradient(rgba(125, 211, 252, 0.35) 1px,
+      transparent 1px),
+
+    linear-gradient(90deg,
+      rgba(125, 211, 252, 0.35) 1px,
+      transparent 1px);
+
+  background-size:
+    90px 90px;
+
+  mask-image:
+    radial-gradient(ellipse at center,
+      black 0%,
+      transparent 72%);
+
+  -webkit-mask-image:
+    radial-gradient(ellipse at center,
+      black 0%,
+      transparent 72%);
+
+  will-change:
+    transform;
+
+  transition:
+    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================================
+   MOUSE FOLLOW LIGHT
+   ========================================================= */
+
+.mouse-light {
+
+  position: absolute;
+
+  width: 430px;
+  height: 430px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle,
+
+      color-mix(in srgb,
+        var(--accent-color) 8%,
+        transparent) 0%,
+
+      color-mix(in srgb,
+        var(--accent-color) 4%,
+        transparent) 25%,
+
+      transparent 70%);
+
+  filter:
+    blur(3px);
+
+  opacity:
+    0.75;
+
+  will-change:
+    left,
+    top;
+
+  transition:
+    left 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    top 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 300ms ease;
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.ambient-particles {
+
+  position: absolute;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  will-change:
+    transform;
+
+  transition:
+    transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.particle {
+
+  position: absolute;
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background:
+    var(--accent-color);
+
+  opacity:
+    var(--particle-opacity);
+
+  box-shadow:
+    0 0 7px var(--accent-color);
+
+  animation:
+    particleFloat 10s ease-in-out infinite;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =========================================================
+   PARTICLE POSITIONS
+   ========================================================= */
+
+.particle-1 {
+  top: 18%;
+  left: 14%;
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.particle-2 {
+  top: 34%;
+  left: 27%;
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+
+.particle-3 {
+  top: 72%;
+  left: 18%;
+  animation-duration: 12s;
+  animation-delay: -4s;
+}
+
+.particle-4 {
+  top: 82%;
+  left: 39%;
+  animation-duration: 15s;
+  animation-delay: -9s;
+}
+
+.particle-5 {
+  top: 24%;
+  right: 28%;
+  animation-duration: 13s;
+  animation-delay: -5s;
+}
+
+.particle-6 {
+  top: 52%;
+  right: 17%;
+  animation-duration: 10s;
+  animation-delay: -3s;
+}
+
+.particle-7 {
+  top: 68%;
+  right: 34%;
+  animation-duration: 16s;
+  animation-delay: -11s;
+}
+
+.particle-8 {
+  top: 13%;
+  right: 11%;
+  animation-duration: 12s;
+  animation-delay: -6s;
+}
+
+.particle-9 {
+  top: 44%;
+  left: 7%;
+  animation-duration: 14s;
+  animation-delay: -8s;
+}
+
+.particle-10 {
+  top: 91%;
+  right: 9%;
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+.particle-11 {
+  top: 7%;
+  left: 48%;
+  animation-duration: 17s;
+  animation-delay: -12s;
+}
+
+.particle-12 {
+  top: 61%;
+  left: 51%;
+  animation-duration: 11s;
+  animation-delay: -6s;
+}
+
+
+/* =========================================================
+   PARTICLE FLOATING
+   ========================================================= */
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+
+    transform:
+      translate3d(0, 0, 0);
+
+    opacity:
+      0.15;
   }
 
+  25% {
 
-  .app-layout {
-    display: flex;
+    transform:
+      translate3d(8px, -14px, 0);
 
-    width: 100%;
-    height: 100%;
-
-    background-color: var(--bg);
-    color: var(--text-primary);
-
-    overflow-x: visible;
+    opacity:
+      0.55;
   }
 
+  50% {
+
+    transform:
+      translate3d(-5px, -25px, 0);
+
+    opacity:
+      0.30;
+  }
+
+  75% {
+
+    transform:
+      translate3d(12px, -10px, 0);
+
+    opacity:
+      0.60;
+  }
+}
+
+
+/* =========================================================
+   ROOT LAYOUT
+   ========================================================= */
+
+:root {
+
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 80px;
+}
+
+
+.app-layout {
+
+  position: relative;
+
+  z-index: 1;
+
+  display: flex;
+
+  width: 100%;
+  height: 100%;
+
+  background-color:
+    transparent;
+
+  color:
+    var(--text-primary);
+
+  overflow-x:
+    visible;
+}
+
+
+.main-content {
+
+  flex-grow: 1;
+
+  margin-left:
+    var(--sidebar-width);
+
+  height: 100vh;
+
+  overflow-y:
+    auto;
+
+  box-sizing:
+    border-box;
+
+  transition:
+    margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.app-layout.sidebar-collapsed .main-content {
+
+  margin-left:
+    var(--sidebar-collapsed-width);
+}
+
+
+.content-container {
+
+  margin:
+    0 auto;
+
+  box-sizing:
+    border-box;
+}
+
+
+/* =========================================================
+   MINI KEYBOARD NAVIGATION
+   ========================================================= */
+
+.keyboard-dock {
+
+  position: fixed;
+
+  left: 10.78%;
+  bottom: 60px;
+
+  z-index: 9999;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  padding:
+    6px 8px;
+
+  border-radius:
+    14px;
+
+  background:
+    linear-gradient(145deg,
+      color-mix(in srgb,
+        var(--glass-bg) 92%,
+        transparent),
+      color-mix(in srgb,
+        var(--surface-strong) 85%,
+        transparent));
+
+  border:
+    1px solid var(--glass-border);
+
+  box-shadow:
+    0 12px 35px var(--theme-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+
+  backdrop-filter:
+    blur(20px) saturate(140%);
+
+  -webkit-backdrop-filter:
+    blur(20px) saturate(140%);
+
+  opacity:
+    0.92;
+
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease,
+    background 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+
+/* =========================================================
+   LIGHT THEME KEYBOARD DOCK
+   ========================================================= */
+
+.portfolio-shell.light-theme .keyboard-dock {
+
+  background:
+    linear-gradient(145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(255, 255, 255, 0.76));
+
+  border-color:
+    rgba(15, 23, 42, 0.14);
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.14),
+    0 2px 8px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+
+/* =========================================================
+   SUBTLE KEYBOARD HINT
+   ========================================================= */
+
+.keyboard-dock::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset:
+    -5px;
+
+  border-radius:
+    18px;
+
+  border:
+    1px solid color-mix(in srgb,
+      var(--accent-color) 35%,
+      transparent);
+
+  pointer-events:
+    none;
+
+  opacity:
+    0;
+
+  animation:
+    keyboardHint 5s ease-in-out infinite;
+}
+
+
+@keyframes keyboardHint {
+
+  0%,
+  65%,
+  100% {
+
+    opacity:
+      0;
+
+    transform:
+      scale(0.96);
+  }
+
+  70% {
+
+    opacity:
+      0.18;
+
+    transform:
+      scale(1);
+  }
+
+  78% {
+
+    opacity:
+      0;
+
+    transform:
+      scale(1.035);
+  }
+}
+
+
+/* =========================================================
+   KEYBOARD DOCK HOVER
+   ========================================================= */
+
+.keyboard-dock:hover {
+
+  opacity:
+    1;
+
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 16px 42px var(--theme-shadow),
+    inset 0 1px 0 var(--glass-highlight);
+}
+
+
+/* =========================================================
+   LIGHT THEME DOCK HOVER
+   ========================================================= */
+
+.portfolio-shell.light-theme .keyboard-dock:hover {
+
+  border-color:
+    rgba(2, 132, 199, 0.22);
+
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.16),
+    0 0 20px rgba(2, 132, 199, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+
+/* =========================================================
+   KEYS
+   ========================================================= */
+
+.key-button {
+
+  position: relative;
+
+  width: 27px;
+  height: 27px;
+
+  padding:
+    0;
+
+  display: flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  border:
+    1px solid var(--border-color);
+
+  border-radius:
+    8px;
+
+  background:
+    linear-gradient(145deg,
+      var(--surface-strong),
+      var(--surface));
+
+  color:
+    var(--text-secondary);
+
+  cursor:
+    pointer;
+
+  font-family:
+    inherit;
+
+  box-shadow:
+    inset 0 1px 0 var(--glass-highlight-soft),
+    0 2px 6px var(--theme-shadow-soft);
+
+  transition:
+    transform 100ms ease,
+    background 140ms ease,
+    border-color 140ms ease,
+    color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+
+/* =========================================================
+   LIGHT THEME KEYS
+   ========================================================= */
+
+.portfolio-shell.light-theme .key-button {
+
+  background:
+    linear-gradient(145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(241, 245, 249, 0.82));
+
+  border-color:
+    rgba(15, 23, 42, 0.13);
+
+  color:
+    #687180;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 2px 7px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =========================================================
+   ARROWS
+   ========================================================= */
+
+.key-arrow {
+
+  display:
+    block;
+
+  font-size:
+    18px;
+
+  line-height:
+    1;
+
+  font-weight:
+    400;
+
+  transform:
+    translateY(-1px);
+
+  transition:
+    transform 120ms ease,
+    color 120ms ease,
+    filter 120ms ease;
+}
+
+
+/* =========================================================
+   KEY HOVER
+   ========================================================= */
+
+.key-button:hover {
+
+  color:
+    var(--accent-color);
+
+  border-color:
+    var(--accent-color);
+
+  background:
+    var(--accent-soft);
+
+  box-shadow:
+    0 0 14px color-mix(in srgb,
+      var(--accent-color) 22%,
+      transparent),
+
+    inset 0 1px 0 var(--glass-highlight);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   LIGHT THEME HOVER
+   ========================================================= */
+
+.portfolio-shell.light-theme .key-button:hover {
+
+  color:
+    #0284c7;
+
+  border-color:
+    #0284c7;
+
+  background:
+    rgba(2, 132, 199, 0.13);
+
+  box-shadow:
+    0 0 16px rgba(2, 132, 199, 0.25),
+
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   PRESSED / CLICKED KEY
+   ========================================================= */
+
+.key-button.key-pressed {
+
+  color:
+    var(--accent-color);
+
+  border-color:
+    var(--accent-color);
+
+  background:
+    var(--accent-soft);
+
+  transform:
+    translateY(2px) scale(0.88);
+
+  box-shadow:
+    0 0 22px color-mix(in srgb,
+      var(--accent-color) 45%,
+      transparent),
+
+    inset 0 1px 6px color-mix(in srgb,
+      var(--accent-color) 25%,
+      transparent);
+}
+
+
+/* =========================================================
+   LIGHT THEME PRESSED / CLICKED
+   ========================================================= */
+
+.portfolio-shell.light-theme .key-button.key-pressed {
+
+  color:
+    #0284c7;
+
+  border-color:
+    #0284c7;
+
+  background:
+    rgba(2, 132, 199, 0.18);
+
+  box-shadow:
+    0 0 24px rgba(2, 132, 199, 0.38),
+
+    0 0 8px rgba(2, 132, 199, 0.22),
+
+    inset 0 1px 7px rgba(2, 132, 199, 0.22);
+
+  transform:
+    translateY(2px) scale(0.88);
+}
+
+
+/* =========================================================
+   PRESSED ARROW
+   ========================================================= */
+
+.key-button.key-pressed .key-arrow {
+
+  color:
+    var(--accent-color);
+
+  transform:
+    translateY(0) scale(1.15);
+
+  filter:
+    drop-shadow(0 0 5px var(--accent-color));
+}
+
+
+/* =========================================================
+   LIGHT THEME PRESSED ARROW
+   ========================================================= */
+
+.portfolio-shell.light-theme .key-button.key-pressed .key-arrow {
+
+  color:
+    #0284c7;
+
+  filter:
+    drop-shadow(0 0 5px rgba(2, 132, 199, 0.7));
+}
+
+
+/* =========================================================
+   KEYBOARD ACTIVE
+   ========================================================= */
+
+.keyboard-dock.keyboard-active {
+
+  animation:
+    keyboardPulse 260ms ease-out;
+}
+
+
+@keyframes keyboardPulse {
+
+  0% {
+
+    transform:
+      scale(1);
+  }
+
+  35% {
+
+    transform:
+      scale(1.045);
+
+    box-shadow:
+
+      0 0 25px color-mix(in srgb,
+        var(--accent-color) 25%,
+        transparent),
+
+      0 12px 35px var(--theme-shadow),
+
+      inset 0 1px 0 var(--glass-highlight);
+  }
+
+  100% {
+
+    transform:
+      scale(1);
+
+    box-shadow:
+
+      0 12px 35px var(--theme-shadow),
+
+      inset 0 1px 0 var(--glass-highlight);
+  }
+}
+
+
+/* =========================================================
+   STATUS DOT
+   ========================================================= */
+
+.keyboard-dot {
+
+  width: 4px;
+  height: 4px;
+
+  margin-left:
+    3px;
+
+  border-radius:
+    50%;
+
+  background:
+    var(--subtle);
+
+  opacity:
+    0.8;
+
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+
+/* =========================================================
+   LIGHT THEME STATUS DOT
+   ========================================================= */
+
+.portfolio-shell.light-theme .keyboard-dot {
+
+  background:
+    #94a3b8;
+
+  box-shadow:
+    0 0 4px rgba(100, 116, 139, 0.18);
+}
+
+
+/* =========================================================
+   ACTIVE STATUS DOT
+   ========================================================= */
+
+.keyboard-dock.keyboard-active .keyboard-dot {
+
+  background:
+    var(--accent-color);
+
+  box-shadow:
+    0 0 10px var(--accent-color),
+
+    0 0 3px var(--accent-color);
+
+  transform:
+    scale(1.5);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
 
   .main-content {
-    flex-grow: 1;
 
-    margin-left: var(--sidebar-width);
+    margin-left:
+      0 !important;
+  }
 
-    height: 100vh;
 
-    overflow-y: auto;
+  .keyboard-dock {
 
-    box-sizing: border-box;
+    left:
+      auto;
+
+    right:
+      12px;
+
+    bottom:
+      12px;
+
+    padding:
+      5px 7px;
+
+    border-radius:
+      12px;
+
+    gap:
+      4px;
+  }
+
+
+  .key-button {
+
+    width:
+      25px;
+
+    height:
+      25px;
+
+    border-radius:
+      7px;
+  }
+
+
+  .key-arrow {
+
+    font-size:
+      16px;
+  }
+
+
+  .ambient-grid {
+
+    background-size:
+      65px 65px;
+  }
+
+
+  .ambient-glow {
+
+    width:
+      380px;
+
+    height:
+      380px;
+
+    filter:
+      blur(80px);
+  }
+
+
+  .mouse-light {
+
+    display:
+      none;
+  }
+
+
+  .particle {
+
+    width:
+      1.5px;
+
+    height:
+      1.5px;
+  }
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .ambient-glow,
+  .ambient-grid,
+  .ambient-particles,
+  .particle,
+  .keyboard-dock,
+  .keyboard-dock::after,
+  .key-button,
+  .key-arrow,
+  .keyboard-dot {
 
     transition:
-      margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      none !important;
+
+    animation:
+      none !important;
   }
 
 
-  .app-layout.sidebar-collapsed .main-content {
-    margin-left: var(--sidebar-collapsed-width);
+  .mouse-light {
+
+    display:
+      none;
   }
-
-
-  .content-container {
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-
-
-  /* =========================================================
-    MOBILE
-    ========================================================= */
-
-  @media (max-width: 768px) {
-    .main-content {
-      margin-left: 0 !important;
-    }
-  }
+}

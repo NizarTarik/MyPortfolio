@@ -1,56 +1,59 @@
 <section class="about-wrapper">
 
-  <header class="about-header">
-    <div class="about-status">
-      <span class="status-dot"></span>
-      <span>AVAILABLE FOR WORK</span>
-    </div>
-  </header>
-
   <div class="about-layout">
 
-    <!-- PORTRAIT -->
+    <!-- =====================================================
+         PORTRAIT
+         ===================================================== -->
+
     <div class="portrait-area">
 
-      <div class="portrait-image-wrapper">
-        <img class="portrait-image" [class.know-me-style]="activeImageIndex === 1" [src]="activeImage.url"
-          [alt]="activeImage.alt" (click)="onImageClick($event)" />
+      <div class="portrait-image-wrapper" role="button" tabindex="0" aria-label="Open personal photo gallery"
+        (click)="openAlbum()" (keydown.enter)="openAlbum()" (keydown.space)="openAlbum()">
+
+        <img class="portrait-image" src="assets/img/nizar.png" alt="Nizar Tarik" />
+
+        <div class="portrait-gradient"></div>
 
         <div class="portrait-meta portrait-meta-top">
           <span>NIZAR TARIK</span>
-          <span>{{ (activeImageIndex + 1).toString().padStart(2, '0') }}</span>
+          <span>01</span>
         </div>
 
         <div class="portrait-meta portrait-meta-bottom">
-          <span>{{ activeImage.caption }}</span>
+          <span>PERSONAL JOURNEY</span>
           <strong>NT</strong>
         </div>
-      </div>
 
-      <div class="image-navigation">
-        <button type="button" (click)="previousImage()" aria-label="Previous image">
-          ←
-        </button>
+        <div class="album-hint">
 
-        <div class="image-dots">
-          <button type="button" *ngFor="let image of images; let i = index" [class.active]="i === activeImageIndex"
-            (click)="selectImage(i)" [attr.aria-label]="'Show image ' + (i + 1)">
-          </button>
+          <div class="album-hint-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div class="album-hint-text">
+            <span>EXPLORE</span>
+            <strong>MY JOURNEY</strong>
+          </div>
+
         </div>
 
-        <button type="button" (click)="nextImage()" aria-label="Next image">
-          →
-        </button>
+        <div class="album-count">
+          {{ photos.length }} MOMENTS
+        </div>
+
       </div>
 
     </div>
 
-    <!-- CONTENT -->
-    <div class="about-content">
 
-      <span class="about-role">
-        FULL-STACK ENGINEER
-      </span>
+    <!-- =====================================================
+         ABOUT CONTENT
+         ===================================================== -->
+
+    <div class="about-content">
 
       <h2>
         Building digital
@@ -67,18 +70,13 @@
           which I completed in <strong>2026</strong>.
         </p>
 
-        <p>
-          Worked previously on modern web applications and business platforms
-          using <strong>Java, Spring Boot, PostgreSQL, and Angular</strong>.
-        </p>
-
       </div>
 
       <div class="about-line"></div>
 
       <div class="about-footer">
-        <span>BASED IN MOROCCO</span>
-        <span>ANGULAR · JAVA · SPRING BOOT · AI</span>
+        <span>FULL-STACK ENGINEER</span>
+        <span>RABAT · MOROCCO</span>
       </div>
 
     </div>
@@ -87,53 +85,134 @@
 
 </section>
 
-<!-- VIDEO OVERLAY -->
 
-<div class="video-overlay-container" *ngIf="isVideoOpen" (click)="closeVideoOverlay()">
+<!-- =========================================================
+     PERSONAL JOURNEY GALLERY
+     ========================================================= -->
 
-  <div class="laptop-frame" (click)="$event.stopPropagation()">
+<div class="journey-overlay" *ngIf="isAlbumOpen" (click)="closeAlbum()">
 
-    <div class="laptop-camera"></div>
+  <!-- Background -->
+  <div class="journey-background"></div>
 
-    <div class="macbook-screen">
 
-      <div class="macbook-toolbar">
+  <!-- =======================================================
+       GALLERY
+       ======================================================= -->
 
-        <div class="window-dots">
-          <button type="button" class="dot red" (click)="closeVideoOverlay()" aria-label="Close video">
-          </button>
+  <div class="journey-gallery" (click)="$event.stopPropagation()">
 
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-        </div>
 
-        <div class="toolbar-title">
-          Nizar_Tarik
-        </div>
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
 
-        <button class="internal-back-btn" type="button" (click)="closeVideoOverlay()">
-          ← Back
-        </button>
+    <header class="journey-header">
 
-      </div>
+      <div class="journey-header-left">
 
-      <div class="screen-content">
+        <span class="journey-eyebrow">
+          PERSONAL JOURNEY
+        </span>
 
-        <video #videoPlayer class="nested-video" controls playsinline poster="assets/img/qss.jpg">
-
-          <source src="assets/vid/vid.mov" type="video/mp4" />
-
-          Your browser does not support the video tag.
-
-        </video>
+        <span class="journey-index">
+          {{ (selectedPhotoIndex + 1) | number:'2.0' }}
+          <span>/</span>
+          {{ photos.length | number:'2.0' }}
+        </span>
 
       </div>
 
-    </div>
 
-    <div class="laptop-base">
-      <div class="laptop-lip"></div>
-      <div class="laptop-trackpad"></div>
+      <button type="button" class="journey-close" aria-label="Close gallery" (click)="closeAlbum()">
+        <span></span>
+        <span></span>
+      </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN IMAGE
+         ===================================================== -->
+
+    <main class="journey-main">
+
+      <!-- Previous -->
+      <button type="button" class="journey-arrow journey-arrow-left" aria-label="Previous photo"
+        (click)="previousPhoto()">
+        <span>←</span>
+      </button>
+
+
+      <!-- Image -->
+      <div class="journey-image-area">
+
+        <div class="journey-image-wrapper">
+
+          <img class="journey-image" [src]="photos[selectedPhotoIndex].src" [alt]="photos[selectedPhotoIndex].alt" />
+
+        </div>
+
+
+        <!-- Description -->
+        <div class="journey-caption">
+
+          <span class="journey-caption-number">
+            {{ (selectedPhotoIndex + 1) | number:'2.0' }}
+          </span>
+
+          <p>
+            {{ photos[selectedPhotoIndex].description }}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Next -->
+      <button type="button" class="journey-arrow journey-arrow-right" aria-label="Next photo" (click)="nextPhoto()">
+        <span>→</span>
+      </button>
+
+    </main>
+
+
+    <!-- =====================================================
+         THUMBNAILS
+         ===================================================== -->
+
+    <footer class="journey-thumbnails">
+
+      <button type="button" class="journey-thumbnail" *ngFor="let photo of photos; let i = index"
+        [class.active]="selectedPhotoIndex === i" [attr.aria-label]="'Open moment ' + (i + 1)" (click)="selectPhoto(i)">
+
+        <img [src]="photo.src" [alt]="photo.alt" />
+
+        <span>
+          {{ (i + 1) | number:'2.0' }}
+        </span>
+
+      </button>
+
+    </footer>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <div class="journey-footer">
+
+      <span>
+        ← → TO NAVIGATE
+      </span>
+
+      <span>
+        ESC TO CLOSE
+      </span>
+
     </div>
 
   </div>

@@ -1,41 +1,32 @@
-
 export type TechnologyType =
   | 'frontend'
   | 'backend'
   | 'db'
-  | 'devops'
-  | 'automation'
-  | 'log';
+  | 'tools';
 
 export interface Planet {
   name: string;
 
-  /*
+  /**
    * MUST BE AN ARRAY
    */
   type: TechnologyType[];
 
   color: string;
   image: string;
-
   orbitRadiusX: number;
   orbitRadiusY: number;
-
   size: number;
   speed: number;
   angle: number;
-
   description: string;
   icon: string;
-
   x?: number;
   y?: number;
 }
 
 export const TECHNOLOGY_PLANETS: Planet[] = [
-
   /* FRONTEND */
-
   {
     name: 'Angular',
     type: ['frontend'],
@@ -50,7 +41,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Angular to build and maintain modern web applications in professional projects.',
     icon: 'A',
   },
-
   {
     name: 'TypeScript',
     type: ['frontend'],
@@ -65,7 +55,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used TypeScript extensively for developing structured and maintainable Angular applications.',
     icon: 'TS',
   },
-
   {
     name: 'HTML',
     type: ['frontend'],
@@ -80,7 +69,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Learned during vocational training and applied it across personal and web development projects.',
     icon: 'HTML',
   },
-
   {
     name: 'CSS',
     type: ['frontend'],
@@ -95,7 +83,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used to create responsive layouts, interfaces, and custom designs for web applications.',
     icon: 'CSS',
   },
-
   {
     name: 'JavaScript',
     type: ['frontend'],
@@ -110,7 +97,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Learned during vocational training and used to build interactive web applications and projects.',
     icon: 'JS',
   },
-
   {
     name: 'Bootstrap',
     type: ['frontend'],
@@ -126,9 +112,7 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
     icon: 'BS',
   },
 
-
   /* BACKEND */
-
   {
     name: 'Java',
     type: ['backend'],
@@ -143,7 +127,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Java to develop backend applications and business logic in professional projects.',
     icon: 'J',
   },
-
   {
     name: 'Spring Boot',
     type: ['backend'],
@@ -158,7 +141,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Spring Boot to build REST APIs, backend services, and business applications.',
     icon: 'SB',
   },
-
   {
     name: 'PHP',
     type: ['backend'],
@@ -173,7 +155,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Learned PHP during vocational training and applied it in personal web development projects.',
     icon: 'PHP',
   },
-
   {
     name: 'Laravel',
     type: ['backend'],
@@ -188,7 +169,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Learned Laravel during vocational training and used it to develop web applications.',
     icon: 'L',
   },
-
   {
     name: 'Symfony',
     type: ['backend'],
@@ -204,9 +184,7 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
     icon: 'S',
   },
 
-
   /* DATABASE */
-
   {
     name: 'SQL',
     type: ['db'],
@@ -221,7 +199,6 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Learned SQL during vocational training and used it to manage and query application data.',
     icon: 'SQL',
   },
-
   {
     name: 'PostgreSQL',
     type: ['db'],
@@ -237,12 +214,10 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
     icon: 'PG',
   },
 
-
-  /* DEVOPS */
-
+  /* TOOLS & PLATFORMS */
   {
     name: 'Git',
-    type: ['devops'],
+    type: ['tools'],
     color: '#f05032',
     image: 'assets/img/tech/git.png',
     orbitRadiusX: 525,
@@ -254,10 +229,9 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Git for version control, source code management, and collaborative development.',
     icon: 'G',
   },
-
   {
     name: 'Docker',
-    type: ['devops'],
+    type: ['tools'],
     color: '#2496ed',
     image: 'assets/img/tech/docker.png',
     orbitRadiusX: 575,
@@ -269,13 +243,23 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Docker to containerize applications and simplify development environments.',
     icon: 'D',
   },
-
-
-  /* AUTOMATION */
-
+  {
+    name: 'Postman',
+    type: ['tools'],
+    color: '#ff6c37',
+    image: 'assets/img/tech/postman.png',
+    orbitRadiusX: 625,
+    orbitRadiusY: 408,
+    size: 25,
+    speed: 0.0017,
+    angle: 4.0,
+    description:
+      'Used Postman to test, debug, and validate REST APIs during backend development.',
+    icon: 'P',
+  },
   {
     name: 'n8n',
-    type: ['automation'],
+    type: ['tools'],
     color: '#ea4b71',
     image: 'assets/img/tech/n8n.png',
     orbitRadiusX: 675,
@@ -287,13 +271,9 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used n8n to automate workflows and connect applications, APIs, and business processes.',
     icon: 'n8n',
   },
-
-
-  /* LOGGING & MONITORING */
-
   {
     name: 'Elasticsearch',
-    type: ['log'],
+    type: ['tools'],
     color: '#00bfb3',
     image: 'assets/img/tech/elasticsearch.png',
     orbitRadiusX: 725,
@@ -305,10 +285,9 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Elasticsearch for storing, searching, and analyzing application logs and data.',
     icon: 'ES',
   },
-
   {
     name: 'Kibana',
-    type: ['log'],
+    type: ['tools'],
     color: '#f04e98',
     image: 'assets/img/tech/kibana.png',
     orbitRadiusX: 775,
@@ -320,5 +299,4 @@ export const TECHNOLOGY_PLANETS: Planet[] = [
       'Used Kibana to visualize, monitor, and analyze application logs and Elasticsearch data.',
     icon: 'K',
   },
-
 ];

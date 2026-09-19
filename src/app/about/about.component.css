@@ -1,5 +1,5 @@
 /* ============================================================
-   ABOUT — PREMIUM EDITORIAL PROFILE
+   ABOUT
    ============================================================ */
 
 :host {
@@ -7,86 +7,46 @@
   width: 100%;
 }
 
+
 /* ============================================================
-   WRAPPER
+   ABOUT WRAPPER
    ============================================================ */
 
 .about-wrapper {
   position: relative;
   width: 100%;
   min-height: 100%;
-
-  padding: clamp(28px, 4vw, 55px) 0 clamp(50px, 7vw, 90px);
+  padding:
+    clamp(30px, 5vw, 65px) clamp(18px, 4vw, 55px) clamp(45px, 6vw, 75px);
 
   color: var(--text-primary);
 
   overflow: hidden;
 
-  animation: aboutEnter 0.7s ease both;
+  animation:
+    aboutEnter 0.7s cubic-bezier(.22, .8, .22, 1) both;
 }
+
 
 /* ============================================================
-   HEADER
-   ============================================================ */
-
-.about-header {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-
-  min-height: 20px;
-
-  margin-bottom: clamp(45px, 6vw, 80px);
-}
-
-.about-status {
-  display: flex;
-  align-items: center;
-
-  gap: 9px;
-
-  font-size: 0.58rem;
-  font-weight: 600;
-
-  letter-spacing: 0.16em;
-
-  color: var(--text-secondary);
-
-  opacity: 0.65;
-}
-
-.status-dot {
-  width: 6px;
-  height: 6px;
-
-  flex: 0 0 auto;
-
-  border-radius: 50%;
-
-  background: var(--accent);
-
-  box-shadow:
-    0 0 0 4px color-mix(in srgb,
-      var(--accent) 10%,
-      transparent);
-
-  animation: statusPulse 2.2s ease-in-out infinite;
-}
-
-/* ============================================================
-   MAIN LAYOUT
+   LAYOUT
    ============================================================ */
 
 .about-layout {
   display: grid;
 
   grid-template-columns:
-    minmax(280px, 0.82fr) minmax(380px, 1.18fr);
+    minmax(280px, 0.82fr) minmax(400px, 1.18fr);
 
   align-items: center;
 
-  gap: clamp(55px, 8vw, 120px);
+  gap: clamp(45px, 7vw, 95px);
+
+  width: min(1180px, 100%);
+
+  margin: 0 auto;
 }
+
 
 /* ============================================================
    PORTRAIT
@@ -96,16 +56,17 @@
   position: relative;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   width: 100%;
 }
 
+
 .portrait-image-wrapper {
   position: relative;
 
-  width: min(100%, 360px);
+  width: min(100%, 330px);
 
   aspect-ratio: 0.82;
 
@@ -113,26 +74,44 @@
 
   border: 1px solid var(--border-color);
 
-  border-radius: 20px;
+  border-radius: 18px;
 
   background: var(--bg);
 
+  cursor: pointer;
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.045);
+
   transition:
+    transform 0.55s cubic-bezier(.2, .8, .2, 1),
     border-color 0.35s ease,
-    transform 0.45s ease,
     box-shadow 0.45s ease;
 }
 
-.portrait-image-wrapper:hover {
-  transform: translateY(-5px);
 
-  border-color: color-mix(in srgb,
-      var(--accent) 45%,
+.portrait-image-wrapper:hover {
+  transform: translateY(-7px);
+
+  border-color:
+    color-mix(in srgb,
+      var(--accent) 42%,
       var(--border-color));
 
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.08);
+    0 32px 80px rgba(0, 0, 0, 0.12);
 }
+
+
+.portrait-image-wrapper:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+
+/* ============================================================
+   PORTRAIT IMAGE
+   ============================================================ */
 
 .portrait-image {
   width: 100%;
@@ -142,30 +121,60 @@
 
   object-fit: cover;
 
+  filter: grayscale(0.08);
+
   transition:
-    transform 0.7s cubic-bezier(.2, .8, .2, 1),
-    filter 0.4s ease;
+    transform 0.9s cubic-bezier(.2, .8, .2, 1),
+    filter 0.6s ease;
 }
+
 
 .portrait-image-wrapper:hover .portrait-image {
-  transform: scale(1.025);
+  transform: scale(1.045);
+
+  filter:
+    grayscale(0) contrast(1.02);
 }
 
-.portrait-image.know-me-style {
-  cursor: pointer;
-
-  filter: grayscale(0.15);
-}
 
 /* ============================================================
-   IMAGE META
+   GRADIENT
+   ============================================================ */
+
+.portrait-gradient {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.28),
+      transparent 28%,
+      transparent 57%,
+      rgba(0, 0, 0, 0.62));
+
+  opacity: 0.82;
+
+  transition:
+    opacity 0.45s ease;
+}
+
+
+.portrait-image-wrapper:hover .portrait-gradient {
+  opacity: 1;
+}
+
+
+/* ============================================================
+   META
    ============================================================ */
 
 .portrait-meta {
   position: absolute;
 
-  left: 18px;
-  right: 18px;
+  left: 17px;
+  right: 17px;
 
   display: flex;
   align-items: center;
@@ -173,211 +182,268 @@
 
   color: #fff;
 
-  font-size: 0.52rem;
+  font-size: 0.5rem;
   font-weight: 600;
 
-  letter-spacing: 0.15em;
+  letter-spacing: 0.17em;
 
   pointer-events: none;
 
   text-shadow:
-    0 1px 10px rgba(0, 0, 0, 0.35);
+    0 1px 12px rgba(0, 0, 0, 0.5);
+
+  z-index: 3;
 }
+
 
 .portrait-meta-top {
-  top: 17px;
+  top: 16px;
 }
+
 
 .portrait-meta-bottom {
-  bottom: 17px;
+  bottom: 18px;
 }
+
 
 .portrait-meta-bottom strong {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
 }
 
+
 /* ============================================================
-   IMAGE NAVIGATION
+   ALBUM HINT
    ============================================================ */
 
-.image-navigation {
+.album-hint {
+  position: absolute;
+
+  left: 18px;
+  bottom: 54px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  color: #fff;
+
+  pointer-events: none;
+
+  transform: translateY(7px);
+
+  opacity: 0.82;
+
+  transition:
+    transform 0.45s cubic-bezier(.2, .8, .2, 1),
+    opacity 0.35s ease;
+}
+
+
+.portrait-image-wrapper:hover .album-hint {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* ============================================================
+   ALBUM ICON
+   ============================================================ */
+
+.album-hint-icon {
+  position: relative;
+
+  width: 36px;
+  height: 36px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  gap: 16px;
+  border:
+    1px solid rgba(255, 255, 255, 0.38);
 
-  margin-top: 17px;
-}
-
-.image-navigation>button {
-  width: 30px;
-  height: 30px;
-
-  display: grid;
-  place-items: center;
-
-  padding: 0;
-
-  border: 1px solid var(--border-color);
   border-radius: 50%;
 
-  background: transparent;
+  background:
+    rgba(255, 255, 255, 0.1);
 
-  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 
-  font-size: 0.72rem;
-
-  cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    transform 0.25s ease;
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.image-navigation>button:hover {
-  background: color-mix(in srgb,
-      var(--accent) 8%,
-      transparent);
 
-  border-color: color-mix(in srgb,
-      var(--accent) 45%,
-      var(--border-color));
+.album-hint-icon span {
+  position: absolute;
 
-  transform: translateY(-2px);
+  width: 11px;
+  height: 13px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.8);
+
+  border-radius: 2px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
 }
 
-.image-dots {
-  display: flex;
-  align-items: center;
 
-  gap: 6px;
+.album-hint-icon span:nth-child(1) {
+  transform:
+    translate(-4px, 2px) rotate(-8deg);
+
+  opacity: 0.45;
 }
 
-.image-dots button {
-  width: 5px;
-  height: 5px;
 
-  padding: 0;
+.album-hint-icon span:nth-child(2) {
+  transform:
+    translate(0, 0);
 
-  border: 0;
-  border-radius: 20px;
-
-  background: var(--text-secondary);
-
-  opacity: 0.3;
-
-  cursor: pointer;
-
-  transition:
-    width 0.3s ease,
-    opacity 0.3s ease,
-    background 0.3s ease;
+  z-index: 2;
 }
 
-.image-dots button.active {
-  width: 16px;
 
-  background: var(--accent);
+.album-hint-icon span:nth-child(3) {
+  transform:
+    translate(4px, -2px) rotate(8deg);
 
-  opacity: 1;
+  opacity: 0.55;
 }
+
 
 /* ============================================================
-   CONTENT
+   HINT TEXT
+   ============================================================ */
+
+.album-hint-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+
+.album-hint-text span {
+  font-size: 0.42rem;
+  letter-spacing: 0.18em;
+  opacity: 0.55;
+}
+
+
+.album-hint-text strong {
+  font-size: 0.57rem;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   PHOTO COUNT
+   ============================================================ */
+
+.album-count {
+  position: absolute;
+
+  right: 17px;
+  bottom: 54px;
+
+  z-index: 4;
+
+  padding: 7px 9px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.22);
+
+  border-radius: 999px;
+
+  background:
+    rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  color:
+    rgba(255, 255, 255, 0.78);
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.13em;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   ABOUT CONTENT
    ============================================================ */
 
 .about-content {
   position: relative;
 
-  max-width: 680px;
+  width: 100%;
+  max-width: 640px;
 
-  padding-bottom: 4px;
+  transform: translateY(-2px);
 }
 
-/* ============================================================
-   ROLE
-   ============================================================ */
-
-.about-role {
-  display: inline-flex;
-  align-items: center;
-
-  margin-bottom: 20px;
-
-  font-size: 0.58rem;
-  font-weight: 700;
-
-  letter-spacing: 0.19em;
-
-  color: var(--accent);
-}
-
-.about-role::before {
-  content: "";
-
-  width: 24px;
-  height: 1px;
-
-  margin-right: 10px;
-
-  background: var(--accent);
-}
-
-/* ============================================================
-   TITLE
-   ============================================================ */
 
 .about-content h2 {
-  max-width: 620px;
+  max-width: 600px;
 
   margin: 0;
 
-  font-size: clamp(2.9rem, 5vw, 4.5rem);
+  font-size:
+    clamp(2.8rem, 5vw, 4.7rem);
 
-  line-height: 0.96;
+  line-height: 0.94;
 
   font-weight: 650;
 
-  letter-spacing: -0.065em;
+  letter-spacing: -0.075em;
+
+  text-wrap: balance;
 }
+
 
 .about-content h2 span {
   display: block;
 
-  margin-top: 4px;
+  margin-top: 5px;
 
   color: var(--text-secondary);
 
-  opacity: 0.58;
+  opacity: 0.48;
 }
 
-/* ============================================================
-   DESCRIPTION
-   ============================================================ */
 
 .about-copy {
-  max-width: 570px;
+  max-width: 540px;
 
   margin-top: 30px;
 }
 
+
 .about-copy p {
   margin: 0;
 
-  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  font-size:
+    clamp(0.9rem, 1vw, 0.98rem);
 
-  line-height: 1.75;
+  line-height: 1.7;
+
+  letter-spacing: -0.008em;
 
   color: var(--text-secondary);
 }
 
-.about-copy p+p {
-  margin-top: 12px;
-
-  opacity: 0.7;
-}
 
 .about-copy strong {
   color: var(--text-primary);
@@ -385,42 +451,48 @@
   font-weight: 600;
 }
 
-/* ============================================================
-   BOTTOM INFORMATION
-   ============================================================ */
 
 .about-line {
   width: 100%;
+
   height: 1px;
 
-  margin: 32px 0 15px;
+  margin:
+    28px 0 14px;
 
   background: var(--border-color);
+
+  opacity: 0.8;
 }
+
 
 .about-footer {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
   gap: 20px;
 
-  font-size: 0.52rem;
+  font-size: 0.5rem;
+
   font-weight: 600;
 
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
 
   color: var(--text-secondary);
 
-  opacity: 0.5;
+  opacity: 0.48;
 }
 
+
 /* ============================================================
-   VIDEO OVERLAY
+   JOURNEY OVERLAY
    ============================================================ */
 
-.video-overlay-container {
+.journey-overlay {
   position: fixed;
+
   inset: 0;
 
   z-index: 9999;
@@ -429,206 +501,487 @@
   align-items: center;
   justify-content: center;
 
-  padding: 30px;
-
-  background: rgba(0, 0, 0, 0.72);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  animation: overlayEnter 0.3s ease both;
-}
-
-.laptop-frame {
-  position: relative;
-
-  width: min(100%, 1050px);
-
-  transform:
-    perspective(1400px) rotateX(2deg);
-
-  animation:
-    laptopEnter 0.45s cubic-bezier(.2, .8, .2, 1) both;
-}
-
-.laptop-camera {
-  position: absolute;
-
-  top: 6px;
-  left: 50%;
-
-  z-index: 3;
-
-  width: 7px;
-  height: 7px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background: #111;
-
-  box-shadow: 0 0 0 2px #222;
-}
-
-.macbook-screen {
-  position: relative;
+  padding: 24px;
 
   overflow: hidden;
 
-  border: 1px solid rgba(255, 255, 255, .16);
+  background:
+    rgba(8, 9, 12, 0.94);
 
-  border-radius: 15px 15px 7px 7px;
-
-  background: #111;
-
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, .45),
-    0 0 0 6px rgba(255, 255, 255, .025);
+  animation:
+    journeyFadeIn 0.35s ease both;
 }
 
-.macbook-toolbar {
-  height: 44px;
 
-  display: grid;
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
 
-  grid-template-columns: 1fr auto 1fr;
+.journey-background {
+  position: absolute;
 
-  align-items: center;
+  inset: -20%;
 
-  padding: 0 15px;
+  background:
+    radial-gradient(circle at 50% 45%,
+      rgba(255, 255, 255, 0.035),
+      transparent 28%);
 
-  background: #171717;
+  pointer-events: none;
+}
 
-  border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+
+.journey-gallery {
+  position: relative;
+
+  width: min(1250px, 100%);
+
+  height: min(900px, 94vh);
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
 
   color: #fff;
 }
 
-.window-dots {
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.journey-header {
+  flex: 0 0 65px;
+
   display: flex;
+
   align-items: center;
 
-  gap: 7px;
+  justify-content: space-between;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.08);
 }
 
-.dot {
-  width: 11px;
-  height: 11px;
 
-  padding: 0;
+.journey-header-left {
+  display: flex;
 
-  border: 0;
+  align-items: center;
 
-  border-radius: 50%;
+  gap: 24px;
 }
 
-.dot.red {
-  background: #ff5f57;
-  cursor: pointer;
+
+.journey-eyebrow {
+  font-size: 0.55rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(255, 255, 255, 0.62);
 }
 
-.dot.yellow {
-  background: #febc2e;
+
+.journey-index {
+  font-size: 0.52rem;
+
+  letter-spacing: 0.12em;
+
+  color:
+    rgba(255, 255, 255, 0.3);
 }
 
-.dot.green {
-  background: #28c840;
+
+.journey-index span {
+  margin: 0 5px;
 }
 
-.toolbar-title {
-  font-size: 0.68rem;
-  font-weight: 500;
 
-  letter-spacing: 0.04em;
+/* ============================================================
+   CLOSE
+   ============================================================ */
 
-  opacity: 0.65;
-}
+.journey-close {
+  position: relative;
 
-.internal-back-btn {
-  justify-self: end;
+  width: 38px;
+  height: 38px;
 
-  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: 0;
 
   background: transparent;
 
-  color: rgba(255, 255, 255, .7);
-
-  font-size: 0.68rem;
-
   cursor: pointer;
 }
 
-.internal-back-btn:hover {
+
+.journey-close span {
+  position: absolute;
+
+  width: 17px;
+  height: 1px;
+
+  background:
+    rgba(255, 255, 255, 0.65);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.journey-close span:first-child {
+  transform: rotate(45deg);
+}
+
+
+.journey-close span:last-child {
+  transform: rotate(-45deg);
+}
+
+
+.journey-close:hover span {
+  background: #fff;
+}
+
+
+.journey-close:hover span:first-child {
+  transform: rotate(135deg);
+}
+
+
+.journey-close:hover span:last-child {
+  transform: rotate(45deg);
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.journey-main {
+  position: relative;
+
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.journey-image-area {
+  width: min(850px, 76%);
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* ============================================================
+   IMAGE
+   ============================================================ */
+
+.journey-image-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  height: min(590px, 68vh);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.journey-image {
+  max-width: 100%;
+  max-height: 100%;
+
+  width: auto;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  user-select: none;
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35);
+
+  animation:
+    journeyImageIn 0.45s cubic-bezier(.2, .8, .2, 1) both;
+}
+
+
+/* ============================================================
+   CAPTION
+   ============================================================ */
+
+.journey-caption {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: 40px 1fr;
+
+  gap: 16px;
+
+  align-items: start;
+
+  margin-top: 20px;
+
+  padding-top: 16px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.journey-caption-number {
+  font-size: 0.5rem;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(255, 255, 255, 0.28);
+}
+
+
+.journey-caption p {
+  margin: 0;
+
+  font-size:
+    clamp(0.72rem, 1vw, 0.88rem);
+
+  line-height: 1.5;
+
+  letter-spacing: 0.01em;
+
+  color:
+    rgba(255, 255, 255, 0.68);
+}
+
+
+/* ============================================================
+   ARROWS
+   ============================================================ */
+
+.journey-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.035);
+
+  color:
+    rgba(255, 255, 255, 0.55);
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.journey-arrow span {
+  font-size: 1rem;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.journey-arrow-left {
+  left: 10px;
+}
+
+
+.journey-arrow-right {
+  right: 10px;
+}
+
+
+.journey-arrow:hover {
+  background:
+    rgba(255, 255, 255, 0.09);
+
+  border-color:
+    rgba(255, 255, 255, 0.25);
+
   color: #fff;
 }
 
-.screen-content {
-  aspect-ratio: 16 / 9;
 
-  background: #000;
+.journey-arrow-left:hover {
+  transform:
+    translateY(-50%) translateX(-3px);
 }
 
-.nested-video {
+
+.journey-arrow-right:hover {
+  transform:
+    translateY(-50%) translateX(3px);
+}
+
+
+/* ============================================================
+   THUMBNAILS
+   ============================================================ */
+
+.journey-thumbnails {
+  flex: 0 0 82px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.08);
+}
+
+
+.journey-thumbnail {
+  position: relative;
+
+  width: 72px;
+  height: 54px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  background: transparent;
+
+  opacity: 0.35;
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.journey-thumbnail:hover {
+  opacity: 0.75;
+
+  transform:
+    translateY(-3px);
+}
+
+
+.journey-thumbnail.active {
+  opacity: 1;
+
+  border-color:
+    rgba(255, 255, 255, 0.7);
+
+  transform:
+    translateY(-3px);
+}
+
+
+.journey-thumbnail img {
   width: 100%;
   height: 100%;
 
   display: block;
 
-  object-fit: contain;
+  object-fit: cover;
 }
 
-.laptop-base {
-  position: relative;
 
-  width: 108%;
-  height: 20px;
-
-  margin-left: -4%;
-
-  border-radius: 0 0 18px 18px;
-
-  background: linear-gradient(to bottom,
-      #bfc2c7,
-      #8d9197);
-
-  box-shadow:
-    0 12px 25px rgba(0, 0, 0, .35);
-}
-
-.laptop-lip {
+.journey-thumbnail span {
   position: absolute;
 
-  top: 0;
-  left: 50%;
+  left: 5px;
+  bottom: 4px;
 
-  width: 18%;
-  height: 5px;
+  font-size: 0.38rem;
 
-  transform: translateX(-50%);
+  letter-spacing: 0.08em;
 
-  border-radius: 0 0 8px 8px;
+  color: #fff;
 
-  background: rgba(0, 0, 0, .2);
+  text-shadow:
+    0 1px 4px #000;
 }
 
-.laptop-trackpad {
-  position: absolute;
 
-  left: 50%;
-  bottom: -12px;
+/* ============================================================
+   FOOTER
+   ============================================================ */
 
-  width: 35%;
-  height: 5px;
+.journey-footer {
+  flex: 0 0 42px;
 
-  transform: translateX(-50%);
+  display: flex;
 
-  border-radius: 0 0 5px 5px;
+  align-items: center;
+  justify-content: space-between;
 
-  background: #8b8e93;
+  font-size: 0.42rem;
+
+  letter-spacing: 0.14em;
+
+  color:
+    rgba(255, 255, 255, 0.25);
 }
+
 
 /* ============================================================
    ANIMATIONS
@@ -637,7 +990,7 @@
 @keyframes aboutEnter {
   from {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(12px);
   }
 
   to {
@@ -646,19 +999,8 @@
   }
 }
 
-@keyframes statusPulse {
 
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.4;
-  }
-}
-
-@keyframes overlayEnter {
+@keyframes journeyFadeIn {
   from {
     opacity: 0;
   }
@@ -668,21 +1010,19 @@
   }
 }
 
-@keyframes laptopEnter {
+
+@keyframes journeyImageIn {
   from {
     opacity: 0;
-
-    transform:
-      perspective(1400px) rotateX(5deg) scale(.97) translateY(12px);
+    transform: scale(0.985);
   }
 
   to {
     opacity: 1;
-
-    transform:
-      perspective(1400px) rotateX(2deg) scale(1) translateY(0);
+    transform: scale(1);
   }
 }
+
 
 /* ============================================================
    TABLET
@@ -690,21 +1030,40 @@
 
 @media (max-width: 1050px) {
 
+  .about-wrapper {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
   .about-layout {
     grid-template-columns:
-      minmax(260px, .8fr) minmax(340px, 1.2fr);
+      minmax(250px, .8fr) minmax(330px, 1.2fr);
 
-    gap: 55px;
+    gap: 50px;
   }
 
   .portrait-image-wrapper {
-    width: min(100%, 330px);
+    width: min(100%, 310px);
   }
 
   .about-content h2 {
-    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-size:
+      clamp(2.7rem, 5vw, 4.3rem);
+  }
+
+  .journey-image-area {
+    width: 78%;
+  }
+
+  .journey-arrow-left {
+    left: 0;
+  }
+
+  .journey-arrow-right {
+    right: 0;
   }
 }
+
 
 /* ============================================================
    MOBILE
@@ -713,17 +1072,14 @@
 @media (max-width: 700px) {
 
   .about-wrapper {
-    padding: 20px 0 60px;
-  }
-
-  .about-header {
-    margin-bottom: 45px;
+    padding:
+      20px 18px 55px;
   }
 
   .about-layout {
     grid-template-columns: 1fr;
 
-    gap: 55px;
+    gap: 42px;
   }
 
   .portrait-area {
@@ -732,56 +1088,135 @@
 
   .about-content {
     order: 2;
+
+    transform: none;
   }
 
   .portrait-image-wrapper {
     width: min(100%, 350px);
+
+    border-radius: 17px;
   }
 
   .about-content h2 {
-    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    max-width: 520px;
+
+    font-size:
+      clamp(2.65rem, 13vw, 4.2rem);
+
+    line-height: 0.94;
+
+    letter-spacing: -0.07em;
   }
 
   .about-copy {
-    margin-top: 26px;
+    margin-top: 25px;
   }
 
-  .about-footer {
-    flex-direction: column;
 
-    align-items: flex-start;
+  /* Gallery */
 
-    gap: 8px;
+  .journey-overlay {
+    padding: 0;
   }
 
-  .video-overlay-container {
-    padding: 15px;
+  .journey-gallery {
+    width: 100%;
+    height: 100vh;
   }
 
-  .laptop-frame {
+  .journey-header {
+    flex-basis: 58px;
+
+    padding:
+      0 16px;
+  }
+
+  .journey-eyebrow {
+    font-size: 0.46rem;
+  }
+
+  .journey-index {
+    font-size: 0.44rem;
+  }
+
+  .journey-header-left {
+    gap: 14px;
+  }
+
+  .journey-main {
+    padding:
+      0 42px;
+  }
+
+  .journey-image-area {
     width: 100%;
   }
 
-  .macbook-toolbar {
-    height: 38px;
-
-    padding: 0 10px;
+  .journey-image-wrapper {
+    height: min(58vh, 520px);
   }
 
-  .toolbar-title,
-  .internal-back-btn {
-    font-size: 0.58rem;
+  .journey-caption {
+    margin-top: 14px;
+
+    padding-top: 12px;
+
+    grid-template-columns:
+      28px 1fr;
+
+    gap: 10px;
   }
 
-  .dot {
-    width: 8px;
-    height: 8px;
+  .journey-caption p {
+    font-size: 0.68rem;
   }
 
-  .laptop-base {
-    height: 12px;
+  .journey-arrow {
+    width: 34px;
+    height: 34px;
+  }
+
+  .journey-arrow-left {
+    left: 5px;
+  }
+
+  .journey-arrow-right {
+    right: 5px;
+  }
+
+  .journey-arrow span {
+    font-size: 0.8rem;
+  }
+
+  .journey-thumbnails {
+    flex-basis: 70px;
+
+    padding:
+      0 12px;
+
+    overflow-x: auto;
+
+    justify-content: flex-start;
+  }
+
+  .journey-thumbnail {
+    flex: 0 0 58px;
+
+    width: 58px;
+    height: 45px;
+  }
+
+  .journey-footer {
+    flex-basis: 35px;
+
+    padding:
+      0 14px;
+
+    font-size: 0.36rem;
   }
 }
+
 
 /* ============================================================
    SMALL MOBILE
@@ -789,30 +1224,59 @@
 
 @media (max-width: 480px) {
 
-  .about-header {
-    align-items: flex-start;
+  .about-wrapper {
+    padding:
+      15px 15px 45px;
   }
 
-  .about-status {
-    margin-top: 7px;
+  .about-layout {
+    gap: 36px;
   }
 
   .portrait-image-wrapper {
+    width: 100%;
+    max-width: 330px;
+
     border-radius: 15px;
   }
 
-  .about-role {
-    margin-bottom: 16px;
+  .journey-header {
+    flex-basis: 52px;
   }
 
-  .about-copy p {
-    font-size: 0.88rem;
+  .journey-main {
+    padding:
+      0 38px;
   }
 
-  .about-copy p+p {
-    font-size: 0.82rem;
+  .journey-image-wrapper {
+    height: min(55vh, 410px);
+  }
+
+  .journey-caption {
+    margin-top: 10px;
+  }
+
+  .journey-caption p {
+    font-size: 0.62rem;
+  }
+
+  .journey-thumbnails {
+    flex-basis: 62px;
+  }
+
+  .journey-thumbnail {
+    flex-basis: 52px;
+
+    width: 52px;
+    height: 41px;
+  }
+
+  .journey-footer {
+    display: none;
   }
 }
+
 
 /* ============================================================
    REDUCED MOTION
@@ -821,15 +1285,16 @@
 @media (prefers-reduced-motion: reduce) {
 
   .about-wrapper,
-  .video-overlay-container,
-  .laptop-frame,
-  .status-dot {
+  .journey-overlay,
+  .journey-image {
     animation: none;
   }
 
   .portrait-image-wrapper,
   .portrait-image,
-  .image-navigation>button {
+  .album-hint,
+  .journey-arrow,
+  .journey-thumbnail {
     transition: none;
   }
 }

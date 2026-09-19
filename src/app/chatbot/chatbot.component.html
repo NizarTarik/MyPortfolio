@@ -7,10 +7,9 @@
   <button type="button" class="chat-toggle" (click)="toggleChat()"
     [attr.aria-label]="isOpen ? 'Close AI assistant' : 'Open AI assistant'">
 
-    <span class="toggle-dot"></span>
 
     <span class="toggle-label">
-      {{ isOpen ? '×' : 'AI' }}
+      {{ isOpen ? '×' : 'AI Assistant' }}
     </span>
 
   </button>
@@ -38,10 +37,6 @@
           Portfolio AI Assistant
         </div>
 
-        <div class="assistant-status">
-          <span></span>
-          Online ·
-        </div>
 
       </div>
 
@@ -122,28 +117,76 @@
 
       <div class="recommendation-list">
 
-        <button type="button" (click)="askQuickQuestion('How old are you?')" [disabled]="isLoading">
+        <button type="button"
+          (click)="askQuickQuestion('Tell me about your background and how you became a Full-Stack Engineer.')"
+          [disabled]="isLoading">
+
 
           <span class="recommendation-icon">
+
+
+
             01
           </span>
 
           <span>
-            How old are you?
+            Your background
           </span>
+
 
         </button>
 
+        <button type="button" (click)="askQuickQuestion('What did you study and what is your educational background?')"
+          [disabled]="isLoading">
 
-        <button type="button" (click)="askQuickQuestion('What is your educational background?')" [disabled]="isLoading">
 
           <span class="recommendation-icon">
+
+
+
             02
           </span>
 
           <span>
             Education
           </span>
+
+
+        </button>
+
+        <button type="button" (click)="askQuickQuestion('What technologies and tools do you work with?')"
+          [disabled]="isLoading">
+
+
+          <span class="recommendation-icon">
+
+
+
+            03
+          </span>
+
+          <span>
+            Tech stack
+          </span>
+
+
+        </button>
+
+        <button type="button" (click)="askQuickQuestion('What kind of projects have you worked on?')"
+          [disabled]="isLoading">
+
+
+          <span class="recommendation-icon">
+
+
+
+            04
+          </span>
+
+          <span>
+            Projects
+          </span>
+
 
         </button>
 

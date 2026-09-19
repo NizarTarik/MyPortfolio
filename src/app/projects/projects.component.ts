@@ -1,8 +1,6 @@
 import {
   Component,
-  HostListener,
-  OnDestroy,
-  OnInit
+  HostListener
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -11,27 +9,13 @@ interface Project {
   id: number;
   title: string;
   description: string;
-
-  // ============================================================
-  // LAPTOP PREVIEW IMAGES
-  // ============================================================
   previewPc: string[];
-
-  // ============================================================
-  // PHONE PREVIEW IMAGES
-  // ============================================================
   previewPhone: string[];
-
-  // ============================================================
-  // FULLSCREEN POPUP IMAGES
-  // ============================================================
   images: string[];
-
   technologies: string[];
   year: string;
   link?: string;
   documentationLink?: string;
-
 }
 
 @Component({
@@ -41,7 +25,7 @@ interface Project {
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
-export class ProjectsComponent implements OnInit, OnDestroy {
+export class ProjectsComponent {
 
   // ============================================================
   // PROJECT DATA
@@ -50,16 +34,145 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   projects: Project[] = [
 
     // ============================================================
-    // PROJECT 1 — MOROCCAN RESTAURANT
+    // PROJECT 1 — INSURANCE CRM
     // ============================================================
 
     {
       id: 1,
-
-      title: 'Moroccan Restaurant',
-
+      title: 'CRM Application',
       year: '2026',
+      description:
+        'An insurance management platform designed to centralize customer data, policies, claims and business workflows in one professional interface.',
 
+      previewPc: [
+        'assets/img/projects/CRMInsurance/dashboard.png',
+        'assets/img/projects/CRMInsurance/prospect.png',
+        'assets/img/projects/CRMInsurance/demandes.png',
+        'assets/img/projects/CRMInsurance/users.png'
+      ],
+
+      previewPhone: [
+        'assets/img/projects/CRMInsurance/dashboard.png',
+        'assets/img/projects/CRMInsurance/notification.png'
+      ],
+
+      images: [
+        'assets/img/projects/CRMInsurance/dashboard.png',
+        'assets/img/projects/CRMInsurance/users.png',
+        'assets/img/projects/CRMInsurance/prospect.png',
+        'assets/img/projects/CRMInsurance/encaisser.png',
+        'assets/img/projects/CRMInsurance/agenda.png',
+        'assets/img/projects/CRMInsurance/notification.png',
+        'assets/img/projects/CRMInsurance/adddemande.png',
+        'assets/img/projects/CRMInsurance/demandes.png',
+        'assets/img/projects/CRMInsurance/cabinet.png'
+      ],
+
+      technologies: [
+        'Angular',
+        'TypeScript',
+        'Spring Boot',
+        'PostgreSQL',
+        'REST API',
+        'AI',
+        'Elasticsearch'
+      ],
+
+      link:
+        'https://github.com/NizarTarik/CRM-Application'
+    },
+
+
+    // ============================================================
+    // PROJECT 2 — TRADING JOURNAL
+    // ============================================================
+
+    {
+      id: 2,
+      title: 'Trading Journal',
+      year: '2026',
+      description:
+        'A trading journal for recording, reviewing and analyzing trades, with performance metrics, detailed statistics and visual insights to help traders understand and improve their strategies.',
+
+      previewPc: [
+        'assets/img/projects/tradingjournal/dashboardPC.png',
+        'assets/img/projects/tradingjournal/listpc.png',
+        'assets/img/projects/tradingjournal/placetradePc.png'
+      ],
+
+      previewPhone: [
+        'assets/img/projects/tradingjournal/dashboardPHONE.png'
+      ],
+
+      images: [
+        'assets/img/projects/tradingjournal/dashboardPC.png',
+        'assets/img/projects/tradingjournal/listpc.png',
+        'assets/img/projects/tradingjournal/placetradePc.png'
+      ],
+
+      technologies: [
+        'Angular',
+        'Spring Boot',
+        'PostgreSQL',
+        'TypeScript',
+        'HTML',
+        'CSS'
+      ],
+
+      link:
+        'https://github.com/NizarTarik/TradingJournal'
+    },
+
+
+    // ============================================================
+    // PROJECT 3 — INSURANCE AI AGENT
+    // ============================================================
+
+    {
+      id: 3,
+      title: 'Insurance AI Agent',
+      year: '2026',
+      description:
+        'AI-powered insurance agent that detects customer needs, identifies the right insurance service, and automatically notifies the support team for fast follow-up via email and WhatsApp.',
+
+      previewPc: [
+        'assets/img/projects/AiInsuranceAgent/img1.png',
+        'assets/img/projects/AiInsuranceAgent/summary.png'
+      ],
+
+      previewPhone: [
+        'assets/img/projects/AiInsuranceAgent/img1Phone.png'
+      ],
+
+      images: [
+        'assets/img/projects/AiInsuranceAgent/img1.png',
+        'assets/img/projects/AiInsuranceAgent/chat.png',
+        'assets/img/projects/AiInsuranceAgent/summary.png'
+      ],
+
+      technologies: [
+        'Angular',
+        'Spring Boot',
+        'PostgreSQL',
+        'TypeScript',
+        'HTML',
+        'CSS',
+        'Gemini API'
+      ],
+
+      link:
+        'https://github.com/NizarTarik/Insurance-AI-Agent'
+    },
+
+
+    // ============================================================
+    // PROJECT 4 — MOROCCAN RESTAURANT
+    // ============================================================
+
+    {
+      id: 4,
+      title: 'Moroccan Restaurant',
+      year: '2026',
       description:
         'A website showcasing Moroccan cuisine, with an admin dashboard for managing users, profiles, dishes, discounts, and reviews.',
 
@@ -93,174 +206,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
       documentationLink:
         'https://nizartarik.github.io/Portfolio/projects/Marokkanisches%20Restaurant.pdf'
-    },
-
-    // ============================================================
-    // PROJECT 2 — INSURANCE CRM
-    // ============================================================
-
-    {
-      id: 2,
-
-      title: 'Insurance CRM',
-
-      year: '2026',
-
-      description:
-        'A insurance management platform designed to centralize customer data, policies, claims and business workflows in one professional interface.',
-
-      // ----------------------------------------------------------
-      // LAPTOP PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPc: [
-        'assets/img/projects/insuranceCRM/dashboard.png',
-        'assets/img/projects/insuranceCRM/clients.png',
-        'assets/img/projects/insuranceCRM/policies.png'
-      ],
-
-      // ----------------------------------------------------------
-      // PHONE PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPhone: [
-        'assets/img/projects/insuranceCRM/dashboardPhone.png',
-        'assets/img/projects/insuranceCRM/clientsPhone.png'
-      ],
-
-      // ----------------------------------------------------------
-      // FULLSCREEN POPUP IMAGES
-      // ----------------------------------------------------------
-
-      images: [
-        'assets/img/projects/insuranceCRM/dashboard.png',
-        'assets/img/projects/insuranceCRM/clients.png',
-        'assets/img/projects/insuranceCRM/policies.png',
-        'assets/img/projects/insuranceCRM/claims.png'
-      ],
-
-      technologies: [
-        'Angular',
-        'Spring Boot',
-        'PostgreSQL',
-        'REST API',
-        'AI'
-      ],
-
-      link: 'https://github.com/NizarTarik/InsuranceCRM'
-    },
-
-
-    // ============================================================
-    // PROJECT 3 — TRADING JOURNAL
-    // ============================================================
-
-    {
-      id: 3,
-
-      title: 'Trading Journal',
-
-      year: '2026',
-
-      description:
-        'A trading journal for recording, reviewing and analyzing trades, with performance metrics, detailed statistics and visual insights to help traders understand and improve their strategies.',
-
-      // ----------------------------------------------------------
-      // LAPTOP PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPc: [
-        'assets/img/projects/tradingjournal/dashboardPC.png',
-        'assets/img/projects/tradingjournal/listpc.png',
-        'assets/img/projects/tradingjournal/placetradePc.png'
-      ],
-
-      // ----------------------------------------------------------
-      // PHONE PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPhone: [
-        'assets/img/projects/tradingjournal/dashboardPHONE.png'
-      ],
-
-      // ----------------------------------------------------------
-      // FULLSCREEN POPUP IMAGES
-      // ----------------------------------------------------------
-
-      images: [
-        'assets/img/projects/tradingjournal/dashboardPC.png',
-        'assets/img/projects/tradingjournal/listpc.png',
-        'assets/img/projects/tradingjournal/placetradePc.png'
-      ],
-
-      technologies: [
-        'Angular',
-        'Spring Boot',
-        'PostgreSQL',
-        'TypeScript',
-        'HTML',
-        'CSS',
-      ],
-
-      link: 'https://github.com/NizarTarik/TradingJournal'
-    },
-
-
-    // ============================================================
-    // PROJECT 4 — INSURANCE AI AGENT
-    // ============================================================
-
-    {
-      id: 4,
-
-      title: 'Insurance AI Agent',
-
-      year: '2026',
-
-      description:
-        'AI-powered insurance agent that detects customer needs, identifies the right insurance service, and automatically notifies the support team for fast follow-up via email and WhatsApp.',
-
-      // ----------------------------------------------------------
-      // LAPTOP PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPc: [
-        'assets/img/projects/AiInsuranceAgent/img1.png',
-        'assets/img/projects/AiInsuranceAgent/summary.png'
-      ],
-
-      // ----------------------------------------------------------
-      // PHONE PREVIEWS
-      // ----------------------------------------------------------
-
-      previewPhone: [
-        'assets/img/projects/AiInsuranceAgent/img1Phone.png'
-      ],
-
-      // ----------------------------------------------------------
-      // FULLSCREEN POPUP IMAGES
-      // ----------------------------------------------------------
-
-      images: [
-        'assets/img/projects/AiInsuranceAgent/img1.png',
-        'assets/img/projects/AiInsuranceAgent/summary.png',
-        'assets/img/projects/AiInsuranceAgent/workflow.png'
-      ],
-
-      technologies: [
-        'Angular',
-        'Spring Boot',
-        'PostgreSQL',
-        'TypeScript',
-        'HTML',
-        'CSS',
-        'Gemini API'
-      ],
-
-      link:
-        'https://github.com/NizarTarik/Insurance-AI-Agent'
     }
-
   ];
 
 
@@ -270,40 +216,11 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   activeProjectIndex = 0;
 
-
-  // ============================================================
-  // SHARED IMAGE INDEX
-  //
-  // This controls:
-  // - Laptop preview
-  // - Phone preview
-  // - Fullscreen popup
-  //
-  // Each image button changes all three together.
-  // ============================================================
-
   activeImageIndex = 0;
-
-
-  // ============================================================
-  // LAPTOP PREVIEW INDEX
-  // ============================================================
 
   activePreviewPcIndex = 0;
 
-
-  // ============================================================
-  // PHONE PREVIEW INDEX
-  // ============================================================
-
   activePreviewPhoneIndex = 0;
-
-
-  // ============================================================
-  // AUTO SLIDER
-  // ============================================================
-
-  private autoSlideTimer?: ReturnType<typeof setInterval>;
 
 
   // ============================================================
@@ -313,25 +230,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   isImageModalOpen = false;
 
   modalImageUrl = '';
-
-
-  // ============================================================
-  // LIFECYCLE
-  // ============================================================
-
-  ngOnInit(): void {
-    this.startAutoSlide();
-  }
-
-
-  ngOnDestroy(): void {
-
-    this.stopAutoSlide();
-
-    document.body.classList.remove(
-      'image-modal-open'
-    );
-  }
 
 
   // ============================================================
@@ -354,9 +252,19 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   @HostListener('document:keydown.arrowleft')
   handleArrowLeft(): void {
 
+    /*
+     * When the image modal is open,
+     * arrows control images.
+     */
     if (this.isImageModalOpen) {
       this.modalPreviousImage();
+      return;
     }
+
+    /*
+     * Otherwise arrows control projects.
+     */
+    this.previousProject();
   }
 
 
@@ -367,9 +275,19 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   @HostListener('document:keydown.arrowright')
   handleArrowRight(): void {
 
+    /*
+     * When the image modal is open,
+     * arrows control images.
+     */
     if (this.isImageModalOpen) {
       this.modalNextImage();
+      return;
     }
+
+    /*
+     * Otherwise arrows control projects.
+     */
+    this.nextProject();
   }
 
 
@@ -435,20 +353,9 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   // ============================================================
   // NEXT IMAGE
-  //
-  // Changes:
-  // 1. Popup image
-  // 2. Laptop image
-  // 3. Phone image
-  //
-  // They all move together when possible.
   // ============================================================
 
   nextImage(): void {
-
-    // ----------------------------------------------------------
-    // POPUP
-    // ----------------------------------------------------------
 
     if (this.activeProject.images.length) {
 
@@ -457,11 +364,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.activeProject.images.length;
     }
 
-
-    // ----------------------------------------------------------
-    // LAPTOP
-    // ----------------------------------------------------------
-
     if (this.activeProject.previewPc.length) {
 
       this.activePreviewPcIndex =
@@ -469,20 +371,12 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.activeProject.previewPc.length;
     }
 
-
-    // ----------------------------------------------------------
-    // PHONE
-    // ----------------------------------------------------------
-
     if (this.activeProject.previewPhone.length) {
 
       this.activePreviewPhoneIndex =
         (this.activePreviewPhoneIndex + 1) %
         this.activeProject.previewPhone.length;
     }
-
-
-    this.restartAutoSlide();
   }
 
 
@@ -492,10 +386,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
 
   previousImage(): void {
 
-    // ----------------------------------------------------------
-    // POPUP
-    // ----------------------------------------------------------
-
     if (this.activeProject.images.length) {
 
       this.activeImageIndex =
@@ -503,11 +393,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           ? this.activeProject.images.length - 1
           : this.activeImageIndex - 1;
     }
-
-
-    // ----------------------------------------------------------
-    // LAPTOP
-    // ----------------------------------------------------------
 
     if (this.activeProject.previewPc.length) {
 
@@ -517,11 +402,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           : this.activePreviewPcIndex - 1;
     }
 
-
-    // ----------------------------------------------------------
-    // PHONE
-    // ----------------------------------------------------------
-
     if (this.activeProject.previewPhone.length) {
 
       this.activePreviewPhoneIndex =
@@ -529,9 +409,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
           ? this.activeProject.previewPhone.length - 1
           : this.activePreviewPhoneIndex - 1;
     }
-
-
-    this.restartAutoSlide();
   }
 
 
@@ -549,8 +426,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     }
 
     this.activeImageIndex = index;
-
-    this.restartAutoSlide();
   }
 
 
@@ -631,8 +506,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       this.projects.length;
 
     this.resetImageIndexes();
-
-    this.restartAutoSlide();
   }
 
 
@@ -648,8 +521,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         : this.activeProjectIndex - 1;
 
     this.resetImageIndexes();
-
-    this.restartAutoSlide();
   }
 
 
@@ -669,8 +540,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     this.activeProjectIndex = index;
 
     this.resetImageIndexes();
-
-    this.restartAutoSlide();
   }
 
 
@@ -709,8 +578,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     document.body.classList.add(
       'image-modal-open'
     );
-
-    this.stopAutoSlide();
   }
 
 
@@ -727,8 +594,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     document.body.classList.remove(
       'image-modal-open'
     );
-
-    this.startAutoSlide();
   }
 
 
@@ -781,56 +646,4 @@ export class ProjectsComponent implements OnInit, OnDestroy {
       this.activeProject.images.length
       ];
   }
-
-
-  // ============================================================
-  // START AUTO SLIDER
-  //
-  // Every 5 seconds:
-  // - Laptop changes
-  // - Phone changes
-  // - Popup index changes
-  // ============================================================
-
-  private startAutoSlide(): void {
-
-    this.stopAutoSlide();
-
-    this.autoSlideTimer = setInterval(() => {
-
-      if (!this.isImageModalOpen) {
-
-        this.nextImage();
-      }
-
-    }, 5000);
-  }
-
-
-  // ============================================================
-  // RESTART AUTO SLIDER
-  // ============================================================
-
-  private restartAutoSlide(): void {
-
-    this.startAutoSlide();
-  }
-
-
-  // ============================================================
-  // STOP AUTO SLIDER
-  // ============================================================
-
-  private stopAutoSlide(): void {
-
-    if (this.autoSlideTimer) {
-
-      clearInterval(
-        this.autoSlideTimer
-      );
-
-      this.autoSlideTimer = undefined;
-    }
-  }
-
 }

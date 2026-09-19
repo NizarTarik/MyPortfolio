@@ -1,5 +1,85 @@
 <div class="portfolio-shell" [class.light-theme]="theme === 'light'">
 
+  <!-- ========================================================= -->
+  <!-- INTERACTIVE AMBIENT BACKGROUND -->
+  <!-- ========================================================= -->
+
+  <div class="ambient-background" aria-hidden="true">
+
+    <!-- MAIN GLOW -->
+
+    <div class="ambient-glow ambient-glow-one" [style.transform]="
+        'translate3d(' +
+        mouseX * 0.018 +
+        'px, ' +
+        mouseY * 0.018 +
+        'px, 0)'
+      ">
+    </div>
+
+
+    <!-- SECONDARY GLOW -->
+
+    <div class="ambient-glow ambient-glow-two" [style.transform]="
+        'translate3d(' +
+        mouseX * -0.012 +
+        'px, ' +
+        mouseY * -0.012 +
+        'px, 0)'
+      ">
+    </div>
+
+
+    <!-- SUBTLE GRID -->
+
+    <div class="ambient-grid" [style.transform]="
+        'translate3d(' +
+        mouseX * 0.006 +
+        'px, ' +
+        mouseY * 0.006 +
+        'px, 0)'
+      ">
+    </div>
+
+
+    <!-- MOUSE LIGHT -->
+
+    <div class="mouse-light" [style.left.px]="mouseClientX" [style.top.px]="mouseClientY">
+    </div>
+
+
+    <!-- PARTICLES -->
+
+    <div class="ambient-particles" [style.transform]="
+        'translate3d(' +
+        mouseX * 0.01 +
+        'px, ' +
+        mouseY * 0.01 +
+        'px, 0)'
+      ">
+
+      <span class="particle particle-1"></span>
+      <span class="particle particle-2"></span>
+      <span class="particle particle-3"></span>
+      <span class="particle particle-4"></span>
+      <span class="particle particle-5"></span>
+      <span class="particle particle-6"></span>
+      <span class="particle particle-7"></span>
+      <span class="particle particle-8"></span>
+      <span class="particle particle-9"></span>
+      <span class="particle particle-10"></span>
+      <span class="particle particle-11"></span>
+      <span class="particle particle-12"></span>
+
+    </div>
+
+  </div>
+
+
+  <!-- ========================================================= -->
+  <!-- MAIN APPLICATION -->
+  <!-- ========================================================= -->
+
   <div class="app-layout" [class.sidebar-collapsed]="isSidebarCollapsed">
 
     <app-sidebar [currentTheme]="theme" (themeToggle)="toggleTheme()">
@@ -9,7 +89,9 @@
     <main class="main-content">
 
       <div class="content-container">
+
         <router-outlet></router-outlet>
+
       </div>
 
     </main>
@@ -17,11 +99,59 @@
   </div>
 
 
-  <!-- =========================================================
-       CHATBOT
-       Global floating component
-       ========================================================= -->
+  <!-- ========================================================= -->
+  <!-- CHATBOT -->
+  <!-- ========================================================= -->
 
   <app-chatbot></app-chatbot>
+
+
+  <!-- ========================================================= -->
+  <!-- KEYBOARD / MOUSE NAVIGATION -->
+  <!-- ========================================================= -->
+
+  <div class="keyboard-dock" [class.keyboard-active]="keyboardActive">
+
+    <!-- LEFT -->
+
+    <button type="button" class="key-button key-left" [class.key-pressed]="pressedKey === 'ArrowLeft'"
+      (click)="triggerKey('ArrowLeft')" aria-label="Previous">
+
+      <span class="key-arrow">
+        ‹
+      </span>
+
+    </button>
+
+
+    <!-- DOWN -->
+
+    <button type="button" class="key-button key-down" [class.key-pressed]="pressedKey === 'ArrowDown'"
+      (click)="triggerKey('ArrowDown')" aria-label="Down">
+
+      <span class="key-arrow">
+        ⌄
+      </span>
+
+    </button>
+
+
+    <!-- RIGHT -->
+
+    <button type="button" class="key-button key-right" [class.key-pressed]="pressedKey === 'ArrowRight'"
+      (click)="triggerKey('ArrowRight')" aria-label="Next">
+
+      <span class="key-arrow">
+        ›
+      </span>
+
+    </button>
+
+
+    <!-- STATUS -->
+
+    <span class="keyboard-dot"></span>
+
+  </div>
 
 </div>

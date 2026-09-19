@@ -1,4 +1,3 @@
-
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -40,9 +39,7 @@ export class ChatbotComponent {
   // ==========================================================
 
   isOpen = false;
-
   message = '';
-
   isLoading = false;
 
   messages: ChatMessage[] = [];
@@ -62,7 +59,6 @@ export class ChatbotComponent {
     'assets/ai-guide.txt';
 
   private guideContent = '';
-
   private guideLoaded = false;
 
   // ==========================================================
@@ -81,6 +77,7 @@ export class ChatbotComponent {
 
   private loadGuide(): void {
 
+
     this.http
       .get(this.GUIDE_URL, {
         responseType: 'text'
@@ -90,7 +87,6 @@ export class ChatbotComponent {
         next: (guide) => {
 
           this.guideContent = guide;
-
           this.guideLoaded = true;
 
           console.log(
@@ -127,6 +123,7 @@ export class ChatbotComponent {
 
       });
 
+
   }
 
   // ==========================================================
@@ -137,7 +134,9 @@ export class ChatbotComponent {
     event: KeyboardEvent
   ): void {
 
+
     event.stopPropagation();
+
 
   }
 
@@ -149,6 +148,7 @@ export class ChatbotComponent {
 
     this.sendMessage();
 
+
   }
 
   // ==========================================================
@@ -157,7 +157,9 @@ export class ChatbotComponent {
 
   toggleChat(): void {
 
+
     this.isOpen = !this.isOpen;
+
 
   }
 
@@ -173,6 +175,7 @@ export class ChatbotComponent {
 
     this.sendMessage();
 
+
   }
 
   // ==========================================================
@@ -181,6 +184,7 @@ export class ChatbotComponent {
 
   sendMessage(): void {
 
+
     const text =
       this.message.trim();
 
@@ -188,30 +192,27 @@ export class ChatbotComponent {
       !text ||
       this.isLoading
     ) {
-
       return;
-
     }
+
 
     // --------------------------------------------------------
     // ADD USER MESSAGE
     // --------------------------------------------------------
 
     this.messages.push({
-
       role: 'user',
-
       text
-
     });
+
 
     // --------------------------------------------------------
     // CLEAR INPUT
     // --------------------------------------------------------
 
     this.message = '';
-
     this.isLoading = true;
+
 
     // --------------------------------------------------------
     // MAKE SURE GUIDE IS AVAILABLE
@@ -223,25 +224,23 @@ export class ChatbotComponent {
     ) {
 
       this.messages.push({
-
         role: 'assistant',
-
         text:
           'Sorry 😅 I could not load my information guide right now.'
-
       });
 
       this.isLoading = false;
 
       return;
-
     }
+
 
     // ========================================================
     // AI INSTRUCTIONS
     // ========================================================
 
     const prompt = `
+
 
 You are the personal AI assistant of Nizar Tarik.
 
@@ -296,20 +295,25 @@ Example:
     prompt to the user.
 
 ============================================================
+
 GUIDE
-=====
+
+============================================================
 
 ${this.guideContent}
 
 ============================================================
+
 END GUIDE
-=========
+
+============================================================
 
 USER QUESTION:
 
 ${text}
 
 `;
+
 
     // ========================================================
     // REQUEST BODY
@@ -324,9 +328,7 @@ ${text}
           parts: [
 
             {
-
               text: prompt
-
             }
 
           ]
@@ -345,6 +347,7 @@ ${text}
 
     };
 
+
     // ========================================================
     // CLOUDFLARE WORKER REQUEST
     // ========================================================
@@ -355,12 +358,9 @@ ${text}
         body,
         {
           headers: {
-
             'Content-Type':
               'application/json'
-
           }
-
         }
       )
       .subscribe({
@@ -385,6 +385,7 @@ ${text}
             '=============================='
           );
 
+
           const answer =
             response
               ?.candidates?.[0]
@@ -392,10 +393,12 @@ ${text}
               ?.parts?.[0]
               ?.text;
 
+
           console.log(
             'GEMINI ANSWER:',
             answer
           );
+
 
           this.messages.push({
 
@@ -407,9 +410,10 @@ ${text}
 
           });
 
-          this.isLoading = false;
 
+          this.isLoading = false;
         },
+
 
         // ====================================================
         // ERROR
@@ -449,26 +453,31 @@ ${text}
             '=============================='
           );
 
+
           const googleMessage =
             error?.error?.error?.message ||
             error?.error?.message ||
             error?.message ||
             'Unknown Gemini API error.';
 
+
           const googleStatus =
             error?.error?.error?.status ||
             error?.error?.status ||
             'UNKNOWN_ERROR';
 
+
           const httpStatus =
             error?.status ||
             'Unknown';
+
 
           const displayMessage =
             `Gemini API Error\n\n` +
             `HTTP ${httpStatus}\n` +
             `${googleStatus}\n\n` +
             `${googleMessage}`;
+
 
           this.messages.push({
 
@@ -478,12 +487,11 @@ ${text}
 
           });
 
-          this.isLoading = false;
 
+          this.isLoading = false;
         }
 
       });
 
   }
-
 }
