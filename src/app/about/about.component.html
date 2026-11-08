@@ -56,20 +56,18 @@
     <div class="about-content">
 
       <h2>
-        Passion for
-        <span>technology.</span>
+        Building digital
+        <span>experiences.</span>
       </h2>
 
       <div class="about-copy">
 
         <p>
-          What started as an interest in technology has grown into a
-          <strong>career path I'm truly passionate about</strong>.
-          I enjoy exploring new technologies, continuously learning,
-          and turning ideas into meaningful digital experiences.
-          With a background in Full-Stack Development and Computer
-          Systems Engineering, I'm excited to keep growing and
-          challenging myself in the ever-evolving world of IT.
+          I started with a
+          <strong>2-year Diploma in Full-Stack Web Development</strong>,
+          then continued with a
+          <strong>Bachelor's degree in Computer Systems Engineering</strong>,
+          which I completed in <strong>2026</strong>.
         </p>
 
       </div>
@@ -83,138 +81,140 @@
 
     </div>
 
+  </div>
 
-    <!-- =========================================================
+</section>
+
+
+<!-- =========================================================
      PERSONAL JOURNEY GALLERY
      ========================================================= -->
 
-    <div class="journey-overlay" *ngIf="isAlbumOpen" (click)="closeAlbum()">
+<div class="journey-overlay" *ngIf="isAlbumOpen" (click)="closeAlbum()">
 
-      <!-- Background -->
-      <div class="journey-background"></div>
+  <!-- Background -->
+  <div class="journey-background"></div>
 
 
-      <!-- =======================================================
+  <!-- =======================================================
        GALLERY
        ======================================================= -->
 
-      <div class="journey-gallery" (click)="$event.stopPropagation()">
+  <div class="journey-gallery" (click)="$event.stopPropagation()">
 
 
-        <!-- =====================================================
+    <!-- =====================================================
          HEADER
          ===================================================== -->
 
-        <header class="journey-header">
+    <header class="journey-header">
 
-          <div class="journey-header-left">
+      <div class="journey-header-left">
 
-            <span class="journey-eyebrow">
-              PERSONAL JOURNEY
-            </span>
+        <span class="journey-eyebrow">
+          PERSONAL JOURNEY
+        </span>
 
-            <span class="journey-index">
-              {{ (selectedPhotoIndex + 1) | number:'2.0' }}
-              <span>/</span>
-              {{ photos.length | number:'2.0' }}
-            </span>
+        <span class="journey-index">
+          {{ (selectedPhotoIndex + 1) | number:'2.0' }}
+          <span>/</span>
+          {{ photos.length | number:'2.0' }}
+        </span>
 
-          </div>
-
-
-          <button type="button" class="journey-close" aria-label="Close gallery" (click)="closeAlbum()">
-            <span></span>
-            <span></span>
-          </button>
-
-        </header>
+      </div>
 
 
-        <!-- =====================================================
+      <button type="button" class="journey-close" aria-label="Close gallery" (click)="closeAlbum()">
+        <span></span>
+        <span></span>
+      </button>
+
+    </header>
+
+
+    <!-- =====================================================
          MAIN IMAGE
          ===================================================== -->
 
-        <main class="journey-main">
+    <main class="journey-main">
 
-          <!-- Previous -->
-          <button type="button" class="journey-arrow journey-arrow-left" aria-label="Previous photo"
-            (click)="previousPhoto()">
-            <span>←</span>
-          </button>
-
-
-          <!-- Image -->
-          <div class="journey-image-area">
-
-            <div class="journey-image-wrapper">
-
-              <img class="journey-image" [src]="photos[selectedPhotoIndex].src"
-                [alt]="photos[selectedPhotoIndex].alt" />
-
-            </div>
+      <!-- Previous -->
+      <button type="button" class="journey-arrow journey-arrow-left" aria-label="Previous photo"
+        (click)="previousPhoto()">
+        <span>←</span>
+      </button>
 
 
-            <!-- Description -->
-            <div class="journey-caption">
+      <!-- Image -->
+      <div class="journey-image-area">
 
-              <span class="journey-caption-number">
-                {{ (selectedPhotoIndex + 1) | number:'2.0' }}
-              </span>
+        <div class="journey-image-wrapper">
 
-              <p>
-                {{ photos[selectedPhotoIndex].description }}
-              </p>
+          <img class="journey-image" [src]="photos[selectedPhotoIndex].src" [alt]="photos[selectedPhotoIndex].alt" />
 
-            </div>
-
-          </div>
+        </div>
 
 
-          <!-- Next -->
-          <button type="button" class="journey-arrow journey-arrow-right" aria-label="Next photo" (click)="nextPhoto()">
-            <span>→</span>
-          </button>
+        <!-- Description -->
+        <div class="journey-caption">
 
-        </main>
-
-
-        <!-- =====================================================
-         THUMBNAILS
-         ===================================================== -->
-
-        <footer class="journey-thumbnails">
-
-          <button type="button" class="journey-thumbnail" *ngFor="let photo of photos; let i = index"
-            [class.active]="selectedPhotoIndex === i" [attr.aria-label]="'Open moment ' + (i + 1)"
-            (click)="selectPhoto(i)">
-
-            <img [src]="photo.src" [alt]="photo.alt" />
-
-            <span>
-              {{ (i + 1) | number:'2.0' }}
-            </span>
-
-          </button>
-
-        </footer>
-
-
-        <!-- =====================================================
-         FOOTER
-         ===================================================== -->
-
-        <div class="journey-footer">
-
-          <span>
-            ← → TO NAVIGATE
+          <span class="journey-caption-number">
+            {{ (selectedPhotoIndex + 1) | number:'2.0' }}
           </span>
 
-          <span>
-            ESC TO CLOSE
-          </span>
+          <p>
+            {{ photos[selectedPhotoIndex].description }}
+          </p>
 
         </div>
 
       </div>
 
+
+      <!-- Next -->
+      <button type="button" class="journey-arrow journey-arrow-right" aria-label="Next photo" (click)="nextPhoto()">
+        <span>→</span>
+      </button>
+
+    </main>
+
+
+    <!-- =====================================================
+         THUMBNAILS
+         ===================================================== -->
+
+    <footer class="journey-thumbnails">
+
+      <button type="button" class="journey-thumbnail" *ngFor="let photo of photos; let i = index"
+        [class.active]="selectedPhotoIndex === i" [attr.aria-label]="'Open moment ' + (i + 1)" (click)="selectPhoto(i)">
+
+        <img [src]="photo.src" [alt]="photo.alt" />
+
+        <span>
+          {{ (i + 1) | number:'2.0' }}
+        </span>
+
+      </button>
+
+    </footer>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <div class="journey-footer">
+
+      <span>
+        ← → TO NAVIGATE
+      </span>
+
+      <span>
+        ESC TO CLOSE
+      </span>
+
     </div>
+
+  </div>
+
+</div>
