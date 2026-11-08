@@ -24,25 +24,30 @@ export class AboutComponent {
   selectedPhotoIndex = 0;
 
   photos: AlbumPhoto[] = [
-
     {
       src: 'assets/img/album/proxisoft.jpg',
-      alt: 'Nizar Tarik during his first internship',
-      description: 'My First Internship in an IT Company'
+      alt: 'Nizar Tarik during his first professional IT internship',
+      description: 'Where it all started! Taking my very first steps into the professional IT world 🚀'
     },
     {
       src: 'assets/img/album/ista.jpg',
       alt: 'Nizar Tarik celebrating his bachelor degree',
-      description: 'Achieving Our Bachelor’s Degree'
-    }, {
-      src: 'assets/img/album/B2Enh.png',
-      alt: 'Nizar Tarik celebrating his B2 German language exam',
-      description: 'Celebrating My Success in the B2 German Language Exam'
+      description: 'We finally did it! Celebrating the culmination of hard work and late-night study sessions 🎓'
+    },
+    {
+      src: 'assets/img/album/ehrenamt.jpeg',
+      alt: 'Nizar Tarik actively participating in Red Crescent volunteer work',
+      description: 'Giving back and learning what community really means with the Red Crescent 🤝❤️'
     },
     {
       src: 'assets/img/album/startup.jpe',
-      alt: 'Nizar Tarik with his college friend',
-      description: 'My Startup Journey with My College Friend 😊'
+      alt: 'Nizar Tarik working with his college friend',
+      description: 'Building dreams, sharing laughs, and tackling challenges with my college bestie along our startup path ✨'
+    },
+    {
+      src: 'assets/img/album/B2Enh.png',
+      alt: 'Nizar Tarik celebrating his B2 German language exam success',
+      description: 'All those vocabulary lists and grammar practice sessions finally paid off! B2 German unlocked 🎉'
     }
   ];
 
